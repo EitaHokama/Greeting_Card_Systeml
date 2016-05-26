@@ -10,12 +10,12 @@ nav {
      text-align :left;
      width : 20%;
      height : 100%;
-  background-color:red/*#004679*/;
+
  }
-#section_box{
-width: 80%;
+.section_box{
+width : 80%;
 height:100%;
- }
+}
 section {
 float : right;
 background-color : #66FF99;
@@ -48,8 +48,4 @@ height:100%;
 .sidemenu-table{
 width:100%;
 height :100%;
-}
-img{
-margin: 0 auto;
-	width:100px;
 }
