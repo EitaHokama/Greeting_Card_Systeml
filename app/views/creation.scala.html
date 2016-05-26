@@ -1,0 +1,54 @@
+
+@import views.html.template._
+
+@cat = @{models.Category.find.all}
+
+@busyo = @{models.Department.find.all}
+
+
+@onSideMenu("感謝カード作成画面")(""){
+	}{
+
+
+
+					<h1>感謝カード作成画面</h1>
+					<form action="conf.php" method="post">
+					<dl>
+                         <form action="cgi-bin/formmail.cgi" method="post">
+                         <p>　　　　　　　　　カテゴリ
+                         <select name="カテゴリ">
+                         <option selected="selected"></option>
+                         @for(ct <- cat){
+                         	<option > @ct.category_name </option>
+                         }
+                         </select></p>
+                          </form>
+
+                         <p><label for="name">宛先</label>　　　　　　　部署
+                         <select name="部署">
+                         <option selected="スペース"></option>
+                         @for(b <-busyo ){
+                         	<option > @b.department_name </option>
+                         }
+
+                         </select>　　　　　　名前
+                         <select name="名前">
+                         <option selected="スペース"></option>
+                         <option value="開発部" >開発部</option>
+                         <option value="営業">営業</option>
+                         <option value="残業">残業</option>
+                         <option value="その他">その他の部署</option>
+                         </select></p><br>
+                         <p><label for="title">件名</label>
+                         <input type="text" id="title" name="title" value=""></p>
+                         <p>ご感想<br>
+                         <textarea name="kanso" rows="20" cols="60"></textarea>
+                         </textarea></p>
+                         </dl>
+
+                     <input type="submit" id="submit" value="送信">
+                     </form>
+
+	}
+
+

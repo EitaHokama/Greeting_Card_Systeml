@@ -1,0 +1,84 @@
+<html>
+<title>JavaScript:動的選択ボックス作成サンプル</title>
+<head>
+</head>
+<body>
+動的選択ボックス作成サンプル : 商品編 <br>
+
+<form name="form1" method="get"
+action="http://www.yahoo.co.jp/" onsubmit="gettext(this)">
+<!-- set name and onChange -->
+<select name="sel_bunruiA" onChange="selectBunruiA(this)">
+<option value="">部署</option>
+</select>
+<select name="sel_bunruiB" width="100px"><option value="">社員</option></select>
+<input type="hidden" name="search" value=""></input>
+</form>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+    //最初の分類リスト (分類Aリスト)を定義
+    var bunruiA = new Array("部署1","部署2","部署3","部署4","部署5","人事6");
+
+    // 次の分類(分類Aごとの分類Bリスト)を定義
+    var bunruiB = new Array();
+    bunruiB["部署1"]= new Array("社員1","社員4","社員7","経営9");
+    bunruiB["部署2"]= new Array("社員2","社員5");
+    bunruiB["部署3"]  = new Array("社員3","社員6");
+    bunruiB["部署4"]  = new Array("");
+    bunruiB["部署5"]  = new Array("");
+    bunruiB["人事6"]  = new Array("人事8");
+
+
+    // 分類Aの選択リストを作成
+    createSelection( form1.elements['sel_bunruiA'], "部署", bunruiA, bunruiA);
+
+    ////////////////////////////////////////////////////
+    //
+    // 選択ボックスに選択肢を追加する関数
+    //	引数: ( selectオブジェクト, value値, text値)
+    function addSelOption( selObj, myValue, myText )
+    {
+        selObj.length++;
+        selObj.options[ selObj.length - 1].value = myValue ;
+        selObj.options[ selObj.length - 1].text  = myText;
+
+    }
+    /////////////////////////////////////////////////////
+    //
+    //	選択リストを作る関数
+    //	引数: ( selectオブジェクト, 見出し, value値配列 , text値配列 )
+    //
+    function createSelection( selObj, midashi, aryValue, aryText )
+    {
+        selObj.length = 0;
+        addSelOption( selObj, midashi, midashi);
+        // 初期化
+        for( var i=0; i < aryValue.length; i++)
+        {
+            addSelOption ( selObj , aryValue[i], aryText[i]);
+        }
+    }
+    ///////////////////////////////////////////////////
+    //
+    // 	分類Aが選択されたときに呼び出される関数
+    //
+    function selectBunruiA(obj)
+    {
+        // 選択肢を動的に生成
+        createSelection(form1.elements['sel_bunruiB'], "社員",
+                bunruiB[obj.value], bunruiB[obj.value]);
+
+    }
+    /////////////////////////////////////////////////
+    // submit前の処理
+    function gettext(form){
+        var a = form1.sel_bunruiA.value;   // 分類1
+        var b = form1.sel_bunruiB.value;   // 分類2
+        // ANDでつなげる
+        form1.elements['search'].value = a+' AND '+b;
+        alert(form1.elements['search'].value );
+    }
+
+//-->
+</script>
