@@ -1,7 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
-
+import com.avaje.ebean.Model.Find;
 import play.data.validation.Constraints.Required;
 
 import java.util.ArrayList;

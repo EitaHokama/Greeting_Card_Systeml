@@ -10,23 +10,19 @@
 <form name="form1" method="get" onsubmit="gettext(this)">
 
 
-                   <Div Align="center">
 
-                         <p><label for="name">変更する人物</label>　　　　　　　部署
+
+
+
+
+                         <p><label for="name">変更する人物</label>	部署
                          <select name="sel_bunruiA" onChange="selectBunruiA(this)">
                          <option value="">部署</option>
-                         </select>
-
-
-
-                         　　　　　　名前
+                         </select> 名前
                          <select name="sel_bunruiB" width="100px"><option value="">社員</option></select>
-                         <input type="hidden" name="search" value=""></input>
+                         <input type ="hidden" name="search" value=""></input>
                          </form>
-
-
-
-                         <label for="name">変更部署選択</label><br><br>
+                          <label for="name">変更部署選択</label><br><br>
                            <select name="部署">
                          <option selected="スペース"></option>
                          @for( b <- busyo){
@@ -36,27 +32,43 @@
 
 
 
+
+
+
+
+
                          <p><label for="title">名前の変更</label><br>
                         <input type="text" id="title" name="title" value=""></p>
+                         <input type="reset" value="リセット（クリア）" onclick="return confirm('リセットボタンがクリックされました。本当に入力内容を削除してもよろしいですか？');">
 
-                          </Div>
 
-                   <Div Align="right">
+
                      <input type="submit" id="submit" value="削除">
                      <input type="submit" id="submit" value="変更登録">
-                     <input type="reset" value="リセット（クリア）" onclick="return confirm('リセットボタンがクリックされました。本当に入力内容を削除してもよろしいですか？');">
-
-                    </Div>
-	}
 
 
+
+
+
+
+                    <h2>Add a new task</h2>
+
+                    <form action="/kanri" method="POST">
+                    <p>
+                    name: <input type="text" name="name" />
+                    </p>
+                    <input type="submit" value="Create" />
+                    </form>
 
 
 
 	<script type="text/javascript" language="JavaScript">
 
     //最初の分類リスト (分類Aリスト)を定義
+    @for(dep <- Department.find.all()){
+
     var bunruiA = new Array("部署1","部署2","部署3","部署4","部署5","人事6");
+    }
 
     // 次の分類(分類Aごとの分類Bリスト)を定義
     var bunruiB = new Array();
@@ -125,3 +137,4 @@
 </script>
 
 
+}

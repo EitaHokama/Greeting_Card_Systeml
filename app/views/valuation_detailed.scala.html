@@ -1,6 +1,6 @@
 @import views.html.template._
 @cat = @{models.Category.find.all}
-
+@busyo = @{models.Department.find.all}
 @template("査定詳細画面"){
 	}{
 
@@ -18,147 +18,17 @@
                         <p>
                         <Div Align="center">
                         <label for="name">日付</label><br>
-                       　　　
-                       <select mame="年">
-                          <option value="2006">2006</option>
-                          <option value="2007">2007</option>
-                          <option value="2008">2008</option>
-                          <option value="2009">2009</option>
-                          <option value="2010">2010</option>
-                          <option value="2011">2011</option>
-                          <option value="2012">2012</option>
-                          <option value="2013">2013</option>
-                          <option value="2014">2014</option>
-                          <option value="2015">2015</option>
-                          <option value="2016">2016</option>
-                          </select>年
 
 
+                       <input type="date" name="date" placeholder="2015-01-13">
 
+	                    　　　　　　　　　<label for="name">日から</label>
 
-
-                       <select mame="月">
-                       <option value="月" >1</option>
-                       <option value="月" >2</option>
-                       <option value="月" >3</option>
-                       <option value="月" >4</option>
-                       <option value="月" >5</option>
-                       <option value="月" >6</option>
-                       <option value="月" >7</option>
-                       <option value="月" >8</option>
-                       <option value="月" >9</option>
-                       <option value="月" >10</option>
-                       <option value="月" >11</option>
-                       <option value="月" >12</option>
-
-                       </select>
-
-                       <select name="days">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
-                </select>日
-
-	                    <label for="name">から</label>
-	                    　　　
 	                    <br>
-                        　　　
-                         <select mame="年">
-                          <option value="2006">2006</option>
-                          <option value="2007">2007</option>
-                          <option value="2008">2008</option>
-                          <option value="2009">2009</option>
-                          <option value="2010">2010</option>
-                          <option value="2011">2011</option>
-                          <option value="2012">2012</option>
-                          <option value="2013">2013</option>
-                          <option value="2014">2014</option>
-                          <option value="2015">2015</option>
-                          <option value="2016">2016</option>
-                          </select>年
 
+                  <input type="date" name="date" placeholder="2015-01-13">
+                        <label for="name">日まで</label>
 
-
-
-
-                       <select mame="月">
-                       <option value="月" >1</option>
-                       <option value="月" >2</option>
-                       <option value="月" >3</option>
-                       <option value="月" >4</option>
-                       <option value="月" >5</option>
-                       <option value="月" >6</option>
-                       <option value="月" >7</option>
-                       <option value="月" >8</option>
-                       <option value="月" >9</option>
-                       <option value="月" >10</option>
-                       <option value="月" >11</option>
-                       <option value="月" >12</option>
-
-                       </select>
-
-                       <select name="days">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
-                </select>日
-                        <label for="name">まで</label>
 
                            <p>　　　　　　　　　カテゴリ
                          <select name="カテゴリ">
@@ -167,21 +37,15 @@
                          	<option > @ct.category_name </option>
                          }
                          </select></p>
-                        </select>
-
-                        </Div>
 
 
 
-                        <Div Align="left">
-                         <label for="name">　　　　送信部署</label><br>
-                         <label for="name">検索</label>
-                         <select name="送信部署">
-                         <option selected="selected"></option>
-                         <option value="開発部" >開発部</option>
-                         <option value="営業部">営業部</option>
-                         <option value="人事部">人事部</option>
-                         <option value="その他">その他</option>
+                         <label for="name">送信部署</label><br><br>
+                           <select name="部署">
+                         <option selected="スペース"></option>
+                         @for( b <- busyo){
+                         	<option > @b.department_name </option>
+                         }
                          </select>
                          </Div>
                           </form>

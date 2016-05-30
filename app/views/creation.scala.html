@@ -6,8 +6,6 @@
 @busyo = @{models.Department.find.all}
 
 
-@onSideMenu("感謝カード作成画面")(""){
-	}{
 
 
 
@@ -45,7 +43,7 @@
                      <input type="submit" id="submit" value="送信">
                      </form>
 
-	}
+
 	<script type="text/javascript" language="JavaScript">
 
     //最初の分類リスト (分類Aリスト)を定義
@@ -59,7 +57,7 @@
     	bunruiB["@dep.department_name"]= new Array();
     			@for(emp <- Employees.find.where().eq("depatrment_id", dep).findList()){
     				bunruiB["@dep.department_name"].push("@emp.name");
-    			}
+
     }
 
 
@@ -114,6 +112,7 @@
         alert(form1.elements['search'].value );
     }
 
+                         }
 
 </script>
 

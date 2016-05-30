@@ -4,7 +4,7 @@ import models.CaseStudy;
 import models.Employees;
 import models.Gratitude_Card;
 import play.mvc.*;
-
+import java.util.Map;
 import views.html.*;
 
 /**
@@ -44,7 +44,35 @@ public class HomeController extends Controller {
     public Result valuation_detailed() {
         return ok(valuation_detailed.render());
     }
+    /*public Result tasks() {
+        List<Task> taskList = Task.find.all();
+        return ok(tasks.render(taskList));*/
 
+
+    public Result createkanri() {
+        // java.util.Map をインポートしておく
+        Map<String, String[]> params = request().body().asFormUrlEncoded();
+        Employees newEmp = new Employees();
+        newEmp.name = params.get("name")[0]; // <input type="text" name="name" /> に入力された値
+        newEmp.save();
+        return redirect(routes.HomeController.kanri());
+    }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
