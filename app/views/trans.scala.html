@@ -7,6 +7,6 @@
 	}{
 	<div class= "ichiran_width">
 
-	<form name="selectForm" action="@routes.HomeController.trans()" method="POST">
+	<form name="selectForm" action="@routes.MailController.trans()" method="POST">
 		@ichiran(gc)(par)("受信部署" :: "受信者" :: "日付" :: "カテゴリ" :: "タイトル" :: Nil)(pos)
 	}

@@ -25,10 +25,10 @@ GET		/kanri						controllers.HomeController.kanri()
 GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
 
 
-POST    /trans					    controllers.HomeController.trans()
-GET	    /trans					    controllers.HomeController.transGet()
-POST    /receive					controllers.HomeController.receive()
-GET	    /receive					controllers.HomeController.receiveGet()
+POST    /trans					    controllers.MailController.trans()
+GET	    /trans					    controllers.MailController.transGet()
+POST    /receive					controllers.MailController.receive()
+GET	    /receive					controllers.MailController.receiveGet()
 
 
 # GET		/login						controllers.HomeController.login()
