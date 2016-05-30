@@ -25,7 +25,7 @@ width:100%;
 height:100%
 }
 #button-box input#button_submit {
-font-size: 20px;
+font-size:20px;
 border-style: none;
 height :100%;
 width:100%;
@@ -36,8 +36,8 @@ margin: 0 auto;
 background-position: left ;
 }
 #button-box input#button_submit:hover{
-font-size:25px:
-font-weight:bold ;
+font-size:25px;
+font-weight:bold;
 text-decoration:none;
 background:#487ca3;
 height :100%;
