@@ -11,9 +11,8 @@
 
 
 					<div class="body_creation">
-					<table class="table_creation">
-					<h1>感謝カード作成画面</h1>
 
+					<h1>感謝カード作成</h1>
 					<table class="line"></table>
 					<form name="form1" method="get" onsubmit="gettext(this)">
 					<dl>
@@ -26,7 +25,6 @@
                          }
                          </select></p>
                           </form>
-
                         <p><label for="name">送る相手の部署</label>
                          <select name="sel_bunruiA" onChange="selectBunruiA(this)">
                          <option value="">部署</option>
@@ -38,16 +36,19 @@
                          <select name="sel_bunruiB" width="100px"><option value="">社員</option></select>
                          <input type="hidden" name="search" value=""></input>
                          </form>
-                         <p><label for="title">件名</label>
+
+                         <p>
+                         <label for="title">件名</label>
                          <input type="text" id="title" name="title" value=""></p>
                          <p>ご感想<br>
-                         <textarea name="kanso" rows="20" cols="60"></textarea>
+
+<textarea name="kanso" rows="12" cols="40">
                          </textarea></p>
                          </dl>
 
                      <input type="submit" id="submit" value="送信">
                      </form>
-                     </table>
+
 </div>
 
 	}

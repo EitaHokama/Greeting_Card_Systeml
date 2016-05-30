@@ -5,25 +5,26 @@ text-align: left;
 /*äpÇÃä€Ç¢ê¸*/
 .line{
 	 margin-top:-15px;
-border: solid 3px #808080;
+border: solid 1px #808080;
  margin-left: auto;
  margin-right: auto;
--webkit-border-radius: 5px;
--moz-border-radius:5px;
-width:98%;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+width:95%;
 }
+body{
+	background-color :#8eb4d9;
+
+	}
+
 .body_creation{
-	background-color :#5D99FF;
+	background-color :#ffffff;
 		position: relative;
 	height:100%;
 	-webkit-border-radius: 5px;
 -moz-border-radius:5px;
 	}
 
-.table_creation{
-	background-color :#ff0000;
-	z-index:1;
-}
 #submit{
 	 position: absolute;
 -webkit-border-radius: 5px;
@@ -41,6 +42,10 @@ left: 65%;
 margin: auto;
 width: 30%;
 height: 10%;
+}
+textarea{
+	 margin-left:1px;
+	font-size:20px;
 
 
 }
