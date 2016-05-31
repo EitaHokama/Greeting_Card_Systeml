@@ -14,7 +14,7 @@
 <html>
     <body bgcolor="#29454d">
     <div id="form-container">
-   <p  class="form-title"></p>
+
    <div class="circle"><img src="@routes.Assets.versioned("images/Lock.png")" class ="lock"></div>
    @if(loginForm.hasGlobalErrors){
    		<p class = "error">
@@ -25,8 +25,10 @@
         <a  id="tab"><div id="name" tabindex="1">@inputText(loginForm("username"))</div></a>
         <a  id="tab"><div id="name" tabindex="2">@inputPassword(loginForm("password"))</div></a>
 
-        <input type="submit"value="Login">
+        <input type="submit"value="Login"><br><br>
+
         }
         </div>
+ <input type="button" onclick="location.href='adlogin'"value="管理者"style="WIDTH: 100px; HEIGHT: 40px; cursor:pointer;">
     </body>
 </html>

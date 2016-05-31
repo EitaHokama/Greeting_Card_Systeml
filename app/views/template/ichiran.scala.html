@@ -1,8 +1,17 @@
 @(gc: List[Gratitude_Card])(par: String)(show: List[String])(pos : Map[String,Array[String]])
 @import views.html.template._
+@import models._
+@import java.util.Date;
+@import java.util.Calendar;
+
 
 @sdf= @{new java.text.SimpleDateFormat("YYYY/MM/dd")}
 @range = @{Range(0, gc.size)}
+@c = @{Calendar.getInstance()}
+@{c.setTime(new Date())}
+@nowCS = @{CaseStudy.find.where().eq("year",c.get(Calendar.YEAR)).eq("month",c.get(Calendar.MONTH)+1).findUnique()}
+@post = @{SelectGC.trans(pos)}
+
 
 
 <!-- gc ソート、絞り込み済み感謝カードリスト　par 権限 show　一覧表示項目(左から) -->
@@ -11,110 +20,122 @@
 
 																			@{/*              日付                       */}
 		<div class="select_date" style="text-align: right;">
-
 		@for(str <- show){
 			@if(str == SelectGC.name.get("date_range")){
-					@if(pos.containsKey("start_date")){
-						<input type="date" name="start_date" style="width: 30mm; height: 7mm;" value="@pos.get("start_date")(0)">から<br>
-					}else{
-					<input type="date" name="start_date">から<br>
-					}
-					@if(pos.containsKey("end_date")){
-						<input type="date" name="end_date" value="@pos.get("end_date")(0)">まで<br>
-					}else{
-					<input type="date" name="end_date">まで<br>
-					}
-				}
+				<input type="date" name="start_date"  value="@post.get("start_date")" onChange="this.form.submit()">から<br>
+				<input type="date" name="end_date" value="@post.get("end_date")"  onChange="this.form.submit()">まで<br>
+
 			}
+		}
 		</div>
 		<table class= "ichiran_index">
 			<tr>
 
+
+
 				@for(str <- show){
-						@if(str == SelectGC.name.get("sender_department")){@{/*              送信部署                       */}
-							<th class="sender_department"><select name="sender_department" style="width: 30mm; height: 7mm;"/>
-							<option>@SelectGC.name.get("sender_department")</option>
-							@if(pos.containsKey("sender_department")){
-								@for(dep <- Department.find.all()){
-									@if(dep.department_name == pos.get("sender_department")(0)){
-										<option selected>@dep.department_name</option>
-									}else{
-										<option>@dep.department_name</option>
-									}
-								}
-							}else{
-								@for(dep <- Department.find.all()){
+					@if(str == SelectGC.name.get("sender_department")){
+						<th class="sender_department"><select name="sender_department" onChange="this.form.submit()" />
+						<option>@SelectGC.name.get("sender_department")</option>
+							@for(dep <- Department.find.all()){
+								@if(dep.department_name == post.get("sender_department")){
+									<option selected>@dep.department_name</option>
+								}else{
 									<option>@dep.department_name</option>
 								}
 							}
+						</select></th>
 
-							</select></th>
-						}else{@if(str == SelectGC.name.get("sender")){
-
-							<th class="sender"><select name="sender" style="width: 30mm; height: 7mm;"/>
-							<option>@SelectGC.name.get("sender")</option>
-								@for(emp <- Employees.find.all()){
-									<option>@emp.name</option>
-								}
-							</select></th>
-						}else{@if(str == SelectGC.name.get("receiver_department")){
-
-							<th class="receiver_department"><select name="receiver_department" style="width: 30mm; height: 7mm;"/>
-							<option>@SelectGC.name.get("receiver_department")</option>
-							@if(pos.containsKey("receiver_department")){
-								@for(dep <- Department.find.all()){
-									@if(dep.department_name == pos.get("receiver_department")(0)){
-										<option selected>@dep.department_name</option>
-									}else{
-										<option>@dep.department_name</option>
-									}
-								}
-							}else{
-								@for(dep <- Department.find.all()){
+					}
+					@if(str == SelectGC.name.get("receiver_department")){
+						<th class="receiver_department"><select name="receiver_department" onChange="this.form.submit()" />
+						<option>@SelectGC.name.get("receiver_department")</option>
+							@for(dep <- Department.find.all()){
+								@if(dep.department_name == post.get("receiver_department")){
+									<option selected>@dep.department_name</option>
+								}else{
 									<option>@dep.department_name</option>
 								}
 							}
-							</select></th>
-						}else{@if(str == SelectGC.name.get("receiver")){
-							<th class="receiver"><select name="receiver"style="width: 30mm; height: 7mm;" />
-							<option>@SelectGC.name.get("receiver")</option>
-								@for(emp <- Employees.find.all()){
-									<option>@emp.name</option>
-								}
-							</select></th>
-						}else{@if(str == SelectGC.name.get("date")){
-							<th class="date">@SelectGC.name.get("date")</th>
-						}else{@if(str == SelectGC.name.get("title")){
-							<th class="card_title">@SelectGC.name.get("title")</th>
-						}else{@if(str== SelectGC.name.get("category")){
-							<th class="category" ><select name="category"style="width: 30mm; height: 7mm;" />
-							<option >@SelectGC.name.get("category")</option>
-								@if(pos.containsKey("category")){
-									@for(cat <- Category.find.all()){<!-- teset -->
-										@if(cat.category_name == pos.get("category")(0)){
-											<option selected>@cat.category_name</option>
+						</select></th>
+					}
+					@if(str == SelectGC.name.get("sender")){
+						<th class="sender"><select name="sender" onChange="this.form.submit()" />
+						<option>@SelectGC.name.get("sender")</option>
+
+						@for(dep <- Department.find.all()){
+							@if(dep.department_name == post.get("sender_department") || post.get("sender_department") == SelectGC.name.get("sender_department")){
+								<optgroup label="@dep.department_name">
+									@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+										@if(emp.name == post.get("sender")){
+											<option selected>@emp.name</option>
 										}else{
-											<option>@cat.category_name</option>
+											<option>@emp.name</option>
 										}
 									}
-								}else{
-									@for(cat <- Category.find.all()){<!-- teset -->
-											<option>@cat.category_name</option>
-									}
-								}
-
-							</select></th>
-						}}}}}}}
+								</optgroup>
+							}
+						}
 					}
-			<th><input type="submit" value="検索" /></th>
+					@if(str == SelectGC.name.get("receiver")){
+						<th class="receiver"><select name="receiver" onChange="this.form.submit()" />
+						<option>@SelectGC.name.get("receiver")</option>
+
+						@for(dep <- Department.find.all()){
+							@if(dep.department_name == post.get("receiver_department") || post.get("receiver_department") == SelectGC.name.get("receiver_department")){
+								<optgroup label="@dep.department_name">
+									@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+										@if(emp.name == post.get("receiver")){
+											<option selected>@emp.name</option>
+										}else{
+											<option>@emp.name</option>
+										}
+									}
+								</optgroup>
+							}
+						}
+					}
+					@if(str == SelectGC.name.get("date")){
+						<th class="date">@SelectGC.name.get("date")</th>
+					}
+					@if(str == SelectGC.name.get("title")){
+						<th class="card_title">@SelectGC.name.get("title")</th>
+					}
+					@if(str== SelectGC.name.get("category")){
+						<th class="category" ><select name="category" onChange="this.form.submit()" />
+						<option >@SelectGC.name.get("category")</option>
+							@for(cat <- Category.find.all()){
+								@if(cat.category_name == post.get("category")){
+									<option selected>@cat.category_name</option>
+								}else{
+									<option>@cat.category_name</option>
+								}
+							}
+					}
+					@if(str == "ピックアップ"){
+						<th class="pickup"><select name="pickup" onChange="this.form.submit()" />
+						<option>すべて</optiron>
+							@for(pick <- SelectGC.name.get("selected") :: Nil){ @{/*SelectGC.name.get("removed") */}
+								@if(pick == post.get("pickup")){
+									<option selected>@pick</option>
+								}else{
+									<option>@pick</option>
+								}
+							}
+					}
+				}
+			<th class="search"><input type="submit" value="更新" /></th>
+
 			</tr>
 		</table>
 	</form>
+
 </div>
+<table class="line"></table>
 <div class="ichiran_contents ichiran_width">
 	<table class= ichiran_table>
 		@for(i <- range){
-		<form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
+
 			<tr>
 				@for(str <- show){
 					@if(str == "送信部署"){
@@ -131,14 +152,23 @@
 						<td class="card_title">@gc.get(i).card_title</td>
 					}else{@if(str=="カテゴリ"){
 						<td class="category">@gc.get(i).category_id.category_name</td>
-					}}}}}}}
+					}else{@if(str=="ピックアップ"){
+						<td class="pickup">
+							@if(gc.get(i).cs.contains(nowCS)){
+								<button form="selectForm" type="submit" name="del_pickup" value="@gc.get(i).card_id" >解除</button>
+							}else{
+								<button form="selectForm" type="submit" name="sel_pickup" value="@gc.get(i).card_id" >登録</button>
+							}
+						</td>
+
+					}}}}}}}}
 				}
-			<th><input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></th>
+			<th><form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
+			<input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></form></th>
 			</tr>
-		</form>
+
 		}
 	</table>
-
 </div>
 <br>
 <div style="text-align: center;">
