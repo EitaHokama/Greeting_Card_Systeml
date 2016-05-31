@@ -45,14 +45,13 @@ width:50px;
 }
 .card_title{
 
-
-
 }
+
 .category{
 
 }
 .pickup{
-width:500px;
+
 }
 .ichiran_width{
 
@@ -72,7 +71,7 @@ height:10%;
 text-align: center;
 	color:#ffffff;
 width:100%;
-height:70%;
+
 }
 .ichiran_value{
 
@@ -115,8 +114,8 @@ border-collapse: collapse;
 border-spacing: 0;
 }
 /*表の色を1行ごとに変える*/
-.ichiran_table tr:nth-of-type(odd) td{background-color:#8eb4d9;border: 2px }
-.ichiran_table tr:nth-of-type(even) td{background-color:#487ca3;border: 2px }
+.ichiran_table tr:nth-of-type(odd) td{background-color:#8eb4d9;border: 2px ;}
+.ichiran_table tr:nth-of-type(even) td{background-color:#487ca3;border: 2px ;}
 /*詳細ボタンがマウスオーバー&押された時*/
 .ichiran_table input:focus{background-color:#c0c0c0;}
 .ichiran_table input:hover{background-color:#c0c0c0;}
