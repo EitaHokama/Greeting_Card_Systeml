@@ -5,10 +5,8 @@
 	}{
 
 
-                   <label for="name">対象者:石川次郎</label><br>
-                   <label for="name">社員ＩＤ：</label>
 
-					<Div Align="center"><h1>査定詳細</h1></Div>
+					<h1>査定詳細</h1></Div>
 
 					<form action="conf.php" method="post">
 					<dl>
@@ -22,7 +20,7 @@
 
                        <input type="date" name="date" placeholder="2015-01-13">
 
-	                    　　　　　　　　　<label for="name">日から</label>
+	                   <label for="name">日から</label>
 
 	                    <br>
 
@@ -30,7 +28,7 @@
                         <label for="name">日まで</label>
 
 
-                           <p>　　　　　　　　　カテゴリ
+                           <p>カテゴリ
                          <select name="カテゴリ">
                          <option selected="selected"></option>
                          @for(ct <- cat){
@@ -47,7 +45,6 @@
                          	<option > @b.department_name </option>
                          }
                          </select>
-                         </Div>
                           </form>
 
 

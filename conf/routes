@@ -20,3 +20,4 @@ GET		/kanri						controllers.HomeController.kanri()
 
 GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
 
+POST    /kanri            controllers.HomeController.createkanri()

@@ -1,98 +1,73 @@
 @import views.html.template._
 @import models._
 @busyo = @{models.Department.find.all}
-@template("変更入力画面"){
-	}{
+@depatrment_id_class = @{new Department}
 
-
+@template("変更入力画面"){ }{
 <h1>変更入力画面</h1>
+<form name="form1"action="@routes.HomeController.createkanri()" method="POST" onsubmit="gettext(this)">
+	<!-- <p> -->
+	<input type="hidden" name="del_flag" value="1"></input>
+	<input type="hidden" name="login_id" value="11"></input>
+	<input type="hidden" name="pass" value="1234"></input>
+		<label for="name">変更する人物</label>部署
+		<select name="sel_bunruiA"
+			onChange="selectBunruiA(this)">
+			<option value="">部署</option>
+		</select>名前
+		<select name="employees_id" width="100px">
+			<option value="">社員</option>
+		</select>
+		<input type="hidden" name="search" value=""></input>
 
-<form name="form1" method="get" onsubmit="gettext(this)">
-
-
-
-
-
-                   <Div Align="center">
-
-                         <p><label for="name">変更する人物</label>　　　　　　　部署
-                         <select name="sel_bunruiA" onChange="selectBunruiA(this)">
-                         <option value="">部署</option>
-                         </select>
-
-
-
-                       名前
-                         <select name="sel_bunruiB" width="100px"><option value="">社員</option></select>
-                         <input type ="hidden" name="search" value=""></input>
-                         </form>
-
-
-
-                         <label for="name">変更部署選択</label><br><br>
-                           <select name="部署">
-                         <option selected="スペース"></option>
-                         @for( b <- busyo){
-                         	<option > @b.department_name </option>
-                         }
-                         </select>
-
-
-
-
-
-
-
-
-                         <p><label for="title">名前の変更</label><br>
-                        <input type="text" id="title" name="title" value=""></p>
-                         <input type="reset" value="リセット（クリア）" onclick="return confirm('リセットボタンがクリックされました。本当に入力内容を削除してもよろしいですか？');">
-
-
-
-                   <Div Align="right">
-                     <input type="submit" id="submit" value="削除">
-                     <input type="submit" id="submit" value="変更登録">
-
-
-                    </Div>
-
-
-
-                    <h2>Add a new task</h2>
-
-                    <form action="/kanri" method="POST">
-                    <p>
-                    name: <input type="text" name="name" />
-                    </p>
-                    <input type="submit" value="Create" />
-                    </form>
-
-
+<label for="name">変更部署選択</label>
+<br>
+<br>
+<select name="depatrment_id">
+	<option selected="スペース"></option>
+	@for( b <- busyo){
+		@depatrment_id_class.department_id = @b.department_id
+		@depatrment_id_class.department_name = "a"
+		<option value="@depatrment_id_class">@b.department_name</option>
+	}
+</select>
+<p>
+	<label for="title">名前の変更</label><br>
+	<input type="text" id="name" name="name" value="">
+</p>
+<!-- <Div Align="right">
+	<input type="submit" id="submit" value="削除">
+	<input type="submit" id="submit" value="変更登録">
+	 <input type="reset" value="リセット（クリア）"
+		onclick="return confirm('リセットボタンがクリックされました。本当に入力内容を削除してもよろしいですか？');">
+	<h2>Add a new task</h2>
+			name: <input type="text" name="name" />
+		</p>
+ -->
+ 	<input type="submit" value="Create" />
+	</form>
 
 	<script type="text/javascript" language="JavaScript">
-
     //最初の分類リスト (分類Aリスト)を定義
     @for(dep <- Department.find.all()){
     var bunruiA = new Array("部署1","部署2","部署3","部署4","部署5","人事6");
     }
-
     // 次の分類(分類Aごとの分類Bリスト)を定義
-    var bunruiB = new Array();
-
+    //var bunruiB = new Array();
+    var bunruiB_id = new Array()
+    var bunruiB_name = new Array()
     @for(dep <- Department.find.all()){
-
-    	bunruiB["@dep.department_name"]= new Array();
+    	//bunruiB["@dep.department_name"]= new Array();
+    	bunruiB_id["@dep.department_name"]= new Array();
+    	bunruiB_name["@dep.department_name"]= new Array();
     			@for(emp <- Employees.find.where().eq("depatrment_id", dep).findList()){
-    				bunruiB["@dep.department_name"].push("@emp.name");
+    				//bunruiB["@dep.department_name"].push("@emp.name");
+    				bunruiB_id["@dep.department_name"].push("@emp.employees_id");
+    				bunruiB_name["@dep.department_name"].push("@emp.name");
     			}
     }
-
-
-
     // 分類Aの選択リストを作成
     createSelection( form1.elements['sel_bunruiA'], "部署", bunruiA, bunruiA);
-
     ////////////////////////////////////////////////////
     //
     // 選択ボックスに選択肢を追加する関数
@@ -102,7 +77,6 @@
         selObj.length++;
         selObj.options[ selObj.length - 1].value = myValue ;
         selObj.options[ selObj.length - 1].text  = myText;
-
     }
     /////////////////////////////////////////////////////
     //
@@ -125,23 +99,20 @@
     //
     function selectBunruiA(obj)
     {
+    	 //alert(bunruiB[obj.value]);
         // 選択肢を動的に生成
-        createSelection(form1.elements['sel_bunruiB'], "社員",
-                bunruiB[obj.value], bunruiB[obj.value]);
-
+        createSelection(form1.elements['employees_id'], "社員",
+                //bunruiB[obj.value], bunruiB[obj.value]);
+        		bunruiB_id[obj.value], bunruiB_name[obj.value]);
     }
     /////////////////////////////////////////////////
     // submit前の処理
     function gettext(form){
         var a = form1.sel_bunruiA.value;   // 分類1
-        var b = form1.sel_bunruiB.value;   // 分類2
+        var b = form1.employees_id.value;   // 分類2
         // ANDでつなげる
         form1.elements['search'].value = a+' AND '+b;
         alert(form1.elements['search'].value );
     }
-
-
 </script>
-
-
-}
+	}

@@ -13,7 +13,7 @@
 					<form name="form1" method="get" onsubmit="gettext(this)">
 					<dl>
                          <form action="cgi-bin/formmail.cgi" method="post">
-                         <p>　　　　　　　　　カテゴリ
+                         <p>カテゴリ
                          <select name="カテゴリ">
                          <option selected="selected"></option>
                          @for(ct <- cat){
@@ -22,14 +22,15 @@
                          </select></p>
                           </form>
 
-                        <p><label for="name">送る相手の部署</label>　　　　　　　部署
+                        <p><label for="name">送る相手の部署</label>部署
                          <select name="sel_bunruiA" onChange="selectBunruiA(this)">
                          <option value="">部署</option>
                          </select>
 
 
 
-                         　　　　　　名前
+
+                         名前
                          <select name="sel_bunruiB" width="100px"><option value="">社員</option></select>
                          <input type="hidden" name="search" value=""></input>
                          </form>
