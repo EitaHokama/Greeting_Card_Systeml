@@ -2,14 +2,17 @@
 @import views.html.template._
 @cat = @{models.Category.find.all}
 @emp = @{models.Employees.find.all}
-@onSideMenu("掲示板")(""){
-	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/bbs.css")">
-	}{
-	<h2>掲示板</h2>
 
+@onSideMenu("掲示板")(""){
+
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/bbs.css")">
+
+	}{
+
+	<h2>掲示板</h2>
 	<div class= "ichiran_width">
 
 	<form name="selectForm" action="@routes.HomeController.bbsPost()" method="POST">
-		@ichiran(gc)(par)(  "日付" :: "カテゴリ" ::"送信者" :: "受信者" ::"タイトル" :: Nil)(pos)
+		@ichiran(gc)(par)(  "日付" :: "カテゴリ" ::"送信者" :: "受信者" ::"タイトル" :: "ピックアップ":: Nil)(pos)
 
 	}

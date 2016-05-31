@@ -27,7 +27,7 @@ GET		/trans						   controllers.HomeController.trans()
 
 # GET	/login						   controllers.HomeController.login()
 
-GET     /valuation					   controllers.HomeController.valuation()
+GET     /valuation					   controllers.HomeController.valuation
 
 GET     /typical                       controllers.HomeController.typical
 POST	/typical					   controllers.HomeController.typicalPost
