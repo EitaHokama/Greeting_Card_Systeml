@@ -35,6 +35,7 @@ GET	    /receive					controllers.MailController.receiveGet()
 # GET		/login						controllers.HomeController.login()
 
 GET     /valuation					   controllers.HomeController.valuation()
+POST     /valuation					   controllers.HomeController.valuationPost()
 
 GET     /typical					   controllers.HomeController.typical()
 POST     /typical					   controllers.HomeController.typicalPost()

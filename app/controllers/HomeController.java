@@ -57,9 +57,15 @@ private FormFactory formFactory;
     }
     public Result valuation() {
     	//Employees emp = Employees.find.byId(1);
-    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
-    	CaseStudy cs = CaseStudy.find.byId(1);
-    	return ok(valuation.render(gc,cs));
+    	List<Employees> emp = Employees.find.all();
+
+    	return ok(valuation.render(emp,"",new HashMap<String,String[]>()));
+    }
+    public Result valuationPost() {
+    	//Employees emp = Employees.find.byId(1);
+
+    	List<Employees> emp = Employees.find.all();
+    	return ok(valuation.render(emp,"",new HashMap<String,String[]>()));
     }
 
     public Result test(){
