@@ -85,6 +85,8 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"send");//send or rec
 		gcWhere=findEmployees(gcWhere,"send");
 		gcWhere=gcWhere.eq("receiver_id.name" , emp.name);
+		gcWhere=startDate(gcWhere);
+		gcWhere=endDate(gcWhere);
 		//gcWhere=findCS(gcWhere);
 		gc=sortDate(gcWhere);
 
@@ -99,6 +101,8 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"rec");//send or rec
 		gcWhere=findEmployees(gcWhere,"rec");
 		gcWhere=gcWhere.eq("sender_id.name" , emp.name);
+		gcWhere=startDate(gcWhere);
+		gcWhere=endDate(gcWhere);
 		//gcWhere=findCS(gcWhere);
 		gc=sortDate(gcWhere);
 
@@ -114,6 +118,8 @@ public class SelectGC {
 		gcWhere=findDepartment(gcWhere,"rec");
 		gcWhere=findEmployees(gcWhere,"send");
 		gcWhere=findEmployees(gcWhere,"rec");
+		gcWhere=startDate(gcWhere);
+		gcWhere=endDate(gcWhere);
 
 		gc=sortDate(gcWhere);
 
@@ -226,7 +232,7 @@ public class SelectGC {
 	private ExpressionList<Gratitude_Card> startDate(ExpressionList<Gratitude_Card> gc){
 		String buf;
 		ExpressionList<Gratitude_Card> st;
-		if(params.get("start_date") ==null){
+		if(!params.containsKey("start_date")){
 			return gc;
 		}
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -246,7 +252,7 @@ public class SelectGC {
 	private ExpressionList<Gratitude_Card> endDate(ExpressionList<Gratitude_Card> gc){
 		String buf;
 		ExpressionList<Gratitude_Card> st;
-		if(params.get("start_date") ==null){
+		if(!params.containsKey("start_date")){
 			return gc;
 		}
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -310,4 +316,24 @@ public class SelectGC {
 
  		return post;
  	}
+ 	public static HashMap lastMonth(HashMap map){
+ 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ 		Date d = new Date();
+ 		Calendar c=Calendar.getInstance();
+ 		c.setTime(d);
+ 		c.add(Calendar.MONTH, -1);
+ 		d= c.getTime();
+ 		String[] str =new String[1];
+ 		String[] str2 =new String[1];
+
+ 		str[0]=sdf.format(d);
+
+ 		str2[0]="";
+ 		map.remove("start_date");
+ 		map.put("start_date", str);
+
+ 		map.put("end_date", str2);
+		return map;
+ 	}
+
 }

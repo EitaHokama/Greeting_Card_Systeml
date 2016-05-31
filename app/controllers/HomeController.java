@@ -7,6 +7,8 @@ import models.Gratitude_Card;
 import play.mvc.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import javax.inject.Inject;
 import views.html.*;
@@ -41,8 +43,12 @@ private FormFactory formFactory;
     }*/
     public Result bbs(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
-    	Map map = new HashMap<String, String[]>();
-    	gc= Gratitude_Card.find.all();
+    	HashMap map = new HashMap<String, String[]>();
+
+    	SelectGC.lastMonth(map);
+    	SelectGC sel = new SelectGC(map);
+
+    	gc = sel.findBBS();
 
     	return ok(bbs.render(gc, "", map));
     }
@@ -88,6 +94,8 @@ private FormFactory formFactory;
     public Result typical(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
     	Map map = new HashMap<String, String[]>();
+
+
     	gc= Gratitude_Card.find.all();
     	SelectGC sel = new SelectGC(map);
     	gc = sel.find();

@@ -8,5 +8,5 @@
 	<div class= "ichiran_width">
 
 	<form name="selectForm" action="@routes.MailController.trans()" method="POST">
-		@ichiran(gc)(par)("受信部署" :: "受信者" :: "日付" :: "カテゴリ" :: "タイトル" :: Nil)(pos)
+		@ichiran(gc)(par)("日付範囲"::"受信部署" :: "受信者" :: "カテゴリ" :: "タイトル" :: "日付" :: Nil)(pos)
 	}
