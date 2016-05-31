@@ -1,81 +1,81 @@
-th.sender_department{
-	margin: 0 auto;
+.ihiran{width:95%;}
+td.sender_department{
+width:10%;
 
 }
-th.sender{
-	margin: 0 auto;
+td.sender{
+width:10%;
 }
-th.receiver_department{
-	margin: 0 auto;
+td.receiver_department{
+width:10%;
 }
-th.receiver{
-	margin: 0 auto;
+td.receiver{
+width:10%;
 }
-th.date{
-	margin: 0 auto;
+td.date{
+width:20%;
 }
-th.card_title
-width:	290px;
-	text-align: center;
+td.card_title{
+width:30%;
 }
-th.category{
+td.category{
+width:10%;
 
-	 padding :0px 17px 0px 0px;
 }
-th.search{
-	 padding :0px 1.6% 0px 0px;
+td.search{
+width:5%;
 }
-th.pickup{
-	margin: 0 auto;
+.pu{
+width:50px;
 }
 .sender_department{
-	width:120px;
-text-align: center;
+
 }
 .sender{
-	text-align: center;
-	width:100px;
+
 }
 .receiver_department{
-	text-align: center;
-	width:120px;
 
 }
 .receiver{
-	width:100px;
-text-align: center;
+
 }
 .date{
-	width:120px;
-text-align: center;
+
 }
 .card_title{
 
-	width:	300px;
-text-align: center;
+
 
 }
 .category{
-	width:80px;
-text-align: center;
+
 }
 .pickup{
-	width:80px;
+width:500px;
 }
 .ichiran_width{
-	width: 95%;
-	margin: 0 auto;
+
 }
 table.ichiran_index{
 
-width:100%;
+
+
+	border: solid 3px #ff0000;
+	border-collapse: collapse;
+border-spacing: 0;
+text-align: center;
+width:99%;
+height:10%;
 }
-.ichiran_table{
+.ichiran_table{ border: solid 3px #0080ff;
+text-align: center;
 	color:#ffffff;
 width:100%;
+height:70%;
 }
 .ichiran_value{
-	text-align: left;
+
 }
 .ichiran_contents{
 	height:250px; background-color:#eeeeee; overflow-y:scroll;

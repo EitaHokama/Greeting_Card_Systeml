@@ -3,7 +3,9 @@
 @cat = @{models.Category.find.all}
 @emp = @{models.Employees.find.all}
 @onSideMenu("掲示板")(""){
+
 	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/sideBbs.css")">
 	}{
 
 	<h2>掲示板</h2>
