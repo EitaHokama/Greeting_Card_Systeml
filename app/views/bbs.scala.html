@@ -1,84 +1,15 @@
-@(gc : Gratitude_Card ,cs : CaseStudy)
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])
 @import views.html.template._
 @cat = @{models.Category.find.all}
 @emp = @{models.Employees.find.all}
 @onSideMenu("掲示板")(""){
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/bbs.css")">
 	}{
-	@cs.gc.get(0).card_title <br>
-	@gc.category_id.gc.get(0).sender_id.name
-	}
-
-	<section>
-
 	<h2>掲示板</h2>
 
-    <table border="1" height="200" width="700" bgcolor="#ccffcc" align="center">
+	<div class= "ichiran_width">
 
-    <tr>
-		<form name="selection">
+	<form name="selectForm" action="@routes.HomeController.bbsPost()" method="POST">
+		@ichiran(gc)(par)(  "日付" :: "カテゴリ" ::"送信者" :: "受信者" ::"タイトル" :: Nil)(pos)
 
-		<th><select name="date">
-				<option value="day">-- 日付 --
-		</th></select>
-
-		<th><select name="select">
-				<option value="category">-- カテゴリ --
-					 @for(ct <- cat){
-                         	<option> @ct.category_name </option>
-                         }
-		</th></select>
-
-		<th><select name="sender">
-				<option value="send">-- 送信者 --
-					 @for(em <- emp){
-                         	<option> @em.name </option>
-                      }
-		</th></select>
-
-		<th><select name="recipient">
-				<option value="res">-- 受信者 --
-					 @for(em <- emp){
-                         	<option> @em.name </option>
-                      }
-		</th></select>
-
-		<th><input type="text" name="text1" value="　　　　　件名" readonly></th>
-		</tr>
-
-		<tr>
-			<td>5月24日</td>
-			<td>デバッグ</td>
-			<td>管理部　竹中</td>
-			<td>開発部　佐藤</td>
-			<td>デバックの件</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		</form>
-	</section>
+	}

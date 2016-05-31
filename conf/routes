@@ -12,29 +12,25 @@ GET     /message                    controllers.AsyncController.message
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
-
 GET     /bbs                           controllers.HomeController.bbs
+POST	/bbs						   controllers.HomeController.bbsPost
 
-GET		/test						controllers.HomeController.test()
+GET		/test						   controllers.HomeController.test()
 
+GET		/creation					   controllers.HomeController.creation()
 
-GET		/creation						controllers.HomeController.creation()
+GET		/kanri						   controllers.HomeController.kanri()
 
-GET		/kanri						controllers.HomeController.kanri()
+GET		/valuation_detailed			   controllers.HomeController.valuation_detailed()
 
-GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
+GET		/trans						   controllers.HomeController.trans()
 
-
-GET		/trans						controllers.HomeController.trans()
-POST    /receive					controllers.HomeController.receive()
-GET	    /receive					controllers.HomeController.receiveGet()
-
-
-# GET		/login						controllers.HomeController.login()
+# GET	/login						   controllers.HomeController.login()
 
 GET     /valuation					   controllers.HomeController.valuation()
 
-GET     /typical					   controllers.HomeController.typical()
+GET     /typical                       controllers.HomeController.typical
+POST	/typical					   controllers.HomeController.typicalPost
 
 GET     /test                       controllers.HomeController.createTest()
 

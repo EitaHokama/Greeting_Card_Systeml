@@ -3,226 +3,91 @@
 @import models._
 @busyo = @{models.Department.find.all}
 @emp = @{models.Employees.find.all}
+
 @onSideMenu("査定")(""){
 	}{
 	@cs.gc.get(0).card_title <br>
 	@gc.category_id.gc.get(0).sender_id.name
 	}
 <section>
-
 	<h2>査定</h2>
 
 	<form name="form1" method="get" onsubmit="gettext(this)">
-		<table border = "0" align="center">
+	<table border = "0" align="center">
+	<tr>
+		<td></td>
+		<td>　所属</td>
+		<td>　名前</td>
+		<td>　日付</td>
+	</tr>
 
-		<tr>
-			<td></td>
-			<td>　所属</td>
-			<td>　名前</td>
-			<td>日付</td>
-		</tr>
-
-		<tr>
-			<td>検索 ： </td>
-
-		<!-- 所属 -->
-			<td><select name="sel_bunruiA" onChange="selectBunruiA(this)">
-			<option>-- 所属 --</option>
+	<tr>
+		<td>検索 ： </td>
+<!-- 所属 -->
+		<td><select name="sel_bunruiA" onChange="selectBunruiA(this)" style="width: 30mm; height: 7mm;">
+			<option value="affiliation">-- 所属 --
 				@for(b <- busyo){
-				<option> @b.department_name </option>
+					<option> @b.department_name </option>
 				}
-			</select>
-			</td>
+		</select></td>
 
-		<!-- 社員名 -->
-			<td>
-			<select name="sel_bunruiB">
-			<option>-- 社員名 --</option>
-					 @for(em <- emp){
-					   	<option> @em.name </option>
-                      }
+<!-- 社員名 -->
+		<td><select name="sel_bunruiB" style="width: 30mm; height: 7mm;">
+			<option value="employee">-- 社員名 --
+				 @for(em <- emp){
+				   	<option> @em.name </option>
+			}
+		</select></td>
 
-			</select>
-
-		<!-- 日付 -->
-
-			<td><select name="year">
-				<option>2016</option>
-				<option>2015</option>
-				<option>2014</option>
-				<option>2013</option>
-				<option>2012</option>
-				<option>2011</option>
-				<option>2010</option>
-				<option>2009</option>
-				<option>2008</option>
-				<option>2007</option>
-			</select>
-			年
-			</td>
-			<td>
-			<select name="month">
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-			</select>
-			月
-			<select name="date">
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
-			</select>
-			日 ～
-			</td>
-
-
-			<td>
-			<select name="year" >
-				<option></option>
-				<option>2016</option>
-				<option>2015</option>
-				<option>2014</option>
-				<option>2013</option>
-				<option>2012</option>
-				<option>2011</option>
-				<option>2010</option>
-				<option>2009</option>
-				<option>2008</option>
-				<option>2007</option>
-			</select>
-			年
-			<select name="month">
-                <option></option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-			</select>
-			月
-			<select name="date">
-                <option></option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
-			</select>
-			日 まで
-		</td>
-		</tr>
-		</table>
-	 	<br>
-		<table border = "1" height="200" width="700" bgcolor="#ccffcc" align="center">
-		<tr>
-			<td>社員ID</td>
-			<td>所属</td>
-			<td>社員名</td>
-			<td>受信件数</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>開発</td>
-			<td>山田太郎</td>
-			<td>453</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-				<tr>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-			<td>　　　　</td>
-		</tr>
-		</table>
+<!-- 日付（カレンダー表示） -->
+		<td><input type="date" name="date" placeholder="2016-01-01"></td>
+		<td>～</td>
+		<td><input type="date" name="date" placeholder="2016-01-01"></td>
+		<td>まで</td>
+	</tr>
+	</table><br>
+<!-- 表の中身 -->
+	<table border = "1" height="200" width="700" bgcolor="#ccffcc" align="center">
+	<tr>
+		<td>社員ID</td>
+		<td>所属</td>
+		<td>社員名</td>
+		<td>受信件数</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>開発</td>
+		<td>山田太郎</td>
+		<td>453</td>
+	</tr>
+	<tr>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+	</tr>
+	<tr>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+	</tr>
+	<tr>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+	</tr>
+			<tr>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+		<td>　　　　</td>
+	</tr>
+	</table>
 	</form>
 
+<!-- Javaスクリプト -->
 	<script type="text/javascript" language="JavaScript">
 
     //最初の分類リスト (分類Aリスト)を定義
@@ -290,5 +155,5 @@
         form1.elements['search'].value = a+' AND '+b;
         alert(form1.elements['search'].value );
     }
-		</script>
+	</script>
 	</section>

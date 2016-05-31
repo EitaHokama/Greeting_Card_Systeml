@@ -1,17 +1,16 @@
 package controllers;
 
-import models.CaseStudy;
-
-import models.Employees;
-import models.Gratitude_Card;
 import play.mvc.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
+
 import views.html.*;
-import java.text.SimpleDateFormat;
-import play.data.Form;
-import play.data.validation.Constraints.Required;
+import models.CaseStudy;
+import models.Employees;
+import models.Gratitude_Card;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -28,19 +27,29 @@ public class HomeController extends Controller {
     public Result index() {
         return ok(index.render());
     }
-    public Result bbs() {
-    	//Employees emp = Employees.find.byId(1);
-    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
-    	CaseStudy cs = CaseStudy.find.byId(1);
-    	return ok(bbs.render(gc,cs));
-    }
+
     public Result valuation() {
     	//Employees emp = Employees.find.byId(1);
     	Gratitude_Card gc = Gratitude_Card.find.byId(1);
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(valuation.render(gc,cs));
     }
+    public Result bbs(){
+    	List<Gratitude_Card> gc = Gratitude_Card.find.all();
 
+    	gc= new SelectGC(new HashMap<String, String[]>()).sortDate(gc);
+
+    	return ok(bbs.render(gc, "", new HashMap<String, String[]>()));
+    }
+    public Result bbsPost(){
+    	List<Gratitude_Card> gc ;
+
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectGC sel = new SelectGC(params);
+    	gc = sel.find();
+
+    	return ok(bbs.render(gc, params.get("sender_department")[0],params));
+    }
     public Result test(){
     	//Employees emp = Employees.find.byId(1);
     	List<Gratitude_Card> gc =
@@ -57,11 +66,22 @@ public class HomeController extends Controller {
     public Result login(){
     	return ok(login.render());
     }
+
     public Result typical(){
-    	//Employees emp = Employees.find.byId(1);
-    	Gratitude_Card gc = Gratitude_Card.find.byId(1);
-    	CaseStudy cs = CaseStudy.find.byId(1);
-    	return ok(typical.render(gc,cs));
+    	List<Gratitude_Card> gc = Gratitude_Card.find.all();
+
+    	gc= new SelectGC(new HashMap<String, String[]>()).sortDate(gc);
+
+    	return ok(typical.render(gc, "", new HashMap<String, String[]>()));
+    }
+    public Result typicalPost(){
+    	List<Gratitude_Card> gc ;
+
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectGC sel = new SelectGC(params);
+    	gc = sel.find();
+
+    	return ok(typical.render(gc, params.get("sender_department")[0],params));
     }
 
     public Result creation() {
@@ -86,23 +106,6 @@ public class HomeController extends Controller {
     	newCard.find.all();
     	return redirect(routes.HomeController.test());
     }
-    public Result receive(){
-    	List<Gratitude_Card> gc ;
 
-    	Map<String, String[]> params =request().body().asFormUrlEncoded();
-    	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
-
-    	return ok(receive.render(gc, "",params));
-    }
-    public Result receiveGet(){
-    	List<Gratitude_Card> gc ;
-    	Map<String, String[]> params =new HashMap<String, String[]>();
-
-    	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入
-
-    	return ok(receive.render(gc, "",params));
-    }
 }
 

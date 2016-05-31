@@ -15,7 +15,7 @@
 		@for(str <- show){
 			@if(str == SelectGC.name.get("date_range")){
 					@if(pos.containsKey("start_date")){
-						<input type="date" name="start_date"  value="@pos.get("start_date")(0)">から<br>
+						<input type="date" name="start_date" style="width: 30mm; height: 7mm;" value="@pos.get("start_date")(0)">から<br>
 					}else{
 					<input type="date" name="start_date">から<br>
 					}
@@ -32,7 +32,7 @@
 
 				@for(str <- show){
 						@if(str == SelectGC.name.get("sender_department")){@{/*              送信部署                       */}
-							<th class="sender_department"><select name="sender_department" />
+							<th class="sender_department"><select name="sender_department" style="width: 30mm; height: 7mm;"/>
 							<option>@SelectGC.name.get("sender_department")</option>
 							@if(pos.containsKey("sender_department")){
 								@for(dep <- Department.find.all()){
@@ -51,7 +51,7 @@
 							</select></th>
 						}else{@if(str == SelectGC.name.get("sender")){
 
-							<th class="sender"><select name="sender" />
+							<th class="sender"><select name="sender" style="width: 30mm; height: 7mm;"/>
 							<option>@SelectGC.name.get("sender")</option>
 								@for(emp <- Employees.find.all()){
 									<option>@emp.name</option>
@@ -59,7 +59,7 @@
 							</select></th>
 						}else{@if(str == SelectGC.name.get("receiver_department")){
 
-							<th class="receiver_department"><select name="receiver_department" />
+							<th class="receiver_department"><select name="receiver_department" style="width: 30mm; height: 7mm;"/>
 							<option>@SelectGC.name.get("receiver_department")</option>
 							@if(pos.containsKey("receiver_department")){
 								@for(dep <- Department.find.all()){
@@ -76,7 +76,7 @@
 							}
 							</select></th>
 						}else{@if(str == SelectGC.name.get("receiver")){
-							<th class="receiver"><select name="receiver" />
+							<th class="receiver"><select name="receiver"style="width: 30mm; height: 7mm;" />
 							<option>@SelectGC.name.get("receiver")</option>
 								@for(emp <- Employees.find.all()){
 									<option>@emp.name</option>
@@ -87,7 +87,7 @@
 						}else{@if(str == SelectGC.name.get("title")){
 							<th class="card_title">@SelectGC.name.get("title")</th>
 						}else{@if(str== SelectGC.name.get("category")){
-							<th class="category" ><select name="category" />
+							<th class="category" ><select name="category"style="width: 30mm; height: 7mm;" />
 							<option >@SelectGC.name.get("category")</option>
 								@if(pos.containsKey("category")){
 									@for(cat <- Category.find.all()){<!-- teset -->
