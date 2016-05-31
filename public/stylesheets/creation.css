@@ -1,5 +1,51 @@
 h1 {
 text-align: left;
-background-color :#5D99FF;
-text-align: center;
+}
+
+/*�p�̊ۂ���*/
+.line{
+	 margin-top:-15px;
+border: solid 1px #808080;
+ margin-left: auto;
+ margin-right: auto;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+width:95%;
+}
+body{
+	background-color :#8eb4d9;
+
+	}
+
+.body_creation{
+	background-color :#ffffff;
+		position: relative;
+	height:100%;
+	-webkit-border-radius: 5px;
+-moz-border-radius:5px;
+	}
+
+#submit{
+	 position: absolute;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border:none;
+font-size: 30px;
+font-weight:bold;
+color: #29454d;
+background-color:  #ffffff;
+position: absolute;
+top: 85%;
+right: 0;
+bottom: 0;
+left: 65%;
+margin: auto;
+width: 30%;
+height: 10%;
+}
+textarea{
+	 margin-left:1px;
+	font-size:20px;
+
+
 }
