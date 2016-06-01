@@ -12,11 +12,48 @@ GET     /message                    controllers.AsyncController.message
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
+
+GET     /bbs                           controllers.HomeController.bbs
+POST     /bbs                           controllers.HomeController.bbsPost
+
 GET		/test						controllers.HomeController.test()
+
 
 GET		/creation						controllers.HomeController.creation()
 
 GET		/kanri						controllers.HomeController.kanri()
 
+POST	/valuation_detailed			controllers.HomeController.valuation_detailedPost()
 GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
+
+
+POST    /trans					    controllers.MailController.trans()
+GET	    /trans					    controllers.MailController.transGet()
+POST    /receive					controllers.MailController.receive()
+GET	    /receive					controllers.MailController.receiveGet()
+
+
+# GET		/login						controllers.HomeController.login()
+
+GET     /valuation					   controllers.HomeController.valuation()
+POST     /valuation					   controllers.HomeController.valuationPost()
+
+GET     /typical					   controllers.HomeController.typical()
+POST     /typical					   controllers.HomeController.typicalPost()
+
+POST     /test                       controllers.HomeController.createTest()
+
+GET		/login						controllers.AuthController.index()
+POST    /login						controllers.AuthController.authenticate()
+
+GET		/logout						controllers.AuthController.logout()
+
+GET		/test2						controllers.TestController.test2()
+POST	/test2						controllers.TestController.test2Post()
+GET		/ichiran/ichiran.js			controllers.TestController.makeJS()
+GET		/ichiran/syousai			controllers.TestController.syousaiGet()
+POST	/ichiran/syousai			controllers.TestController.syousai()
+
+GET 	/adlogin					controllers.AuthController.adindex()
+POST 	/adlogin					controllers.AuthController.adauthenticate()
 

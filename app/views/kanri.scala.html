@@ -3,7 +3,7 @@
 @busyo = @{models.Department.find.all}
 @template("変更入力画面"){
 	}{
-
+		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/kanri.css")">
 
 <h1>変更入力画面</h1>
 
@@ -64,7 +64,7 @@
     @for(dep <- Department.find.all()){
 
     	bunruiB["@dep.department_name"]= new Array();
-    			@for(emp <- Employees.find.where().eq("depatrment_id", dep).findList()){
+    			@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
     				bunruiB["@dep.department_name"].push("@emp.name");
     			}
     }

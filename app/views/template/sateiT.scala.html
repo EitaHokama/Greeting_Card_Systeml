@@ -1,0 +1,99 @@
+@(emp: List[Employees])(par: String)(pos : Map[String,Array[String]])
+@import views.html.template._
+@import models._
+@import java.util.Date;
+@import java.util.Calendar;
+
+
+@sdf= @{new java.text.SimpleDateFormat("YYYY/MM/dd")}
+@range = @{Range(0, emp.size)}
+@c = @{Calendar.getInstance()}
+@{c.setTime(new Date())}
+@nowCS = @{CaseStudy.find.where().eq("year",c.get(Calendar.YEAR)).eq("month",c.get(Calendar.MONTH)+1).findUnique()}
+@post = @{SelectEmp.trans(pos)}
+@countGC = @{new SelectGC(pos)}
+
+
+<!-- gc ソート、絞り込み済み感謝カードリスト　par 権限 show　一覧表示項目(左から) -->
+<!--　日付　ソート
+　部署、送信者、カテゴリ　絞り込み-->
+<div class= "ichiran_width">
+
+	<form id="selectForm" name="selectForm" action="@routes.HomeController.valuationPost()" method="POST">
+
+
+
+
+																			@{/*              日付                       */}
+		<div class="select_date" style="text-align: right;">
+				<input type="date" name="start_date"  value="@post.get("start_date")" onChange="this.form.submit()">から<br>
+				<input type="date" name="end_date" value="@post.get("end_date")"  onChange="this.form.submit()">まで<br>
+
+
+		</div>
+		<table class= "ichiran_index">
+			<tr>
+				<th class="emp_cd">社員ID</th>
+				<th class="department"><select name="department" onChange="this.form.submit()" />
+					<option>所属</option>
+						@for(dep <- Department.find.all()){
+							@if(dep.department_name == post.get("department")){
+								<option selected>@dep.department_name</option>
+							}else{
+								<option>@dep.department_name</option>
+							}
+						}
+					</select>
+				</th>
+				<th class="employees"><select name="employees" onChange="this.form.submit()" />
+					<option>社員名</option>
+
+					@for(dep <- Department.find.all()){
+						@if(dep.department_name == post.get("department") || post.get("department") == "所属"){
+							<optgroup label="@dep.department_name">
+								@for(empD <- Employees.find.where().eq("department_id", dep).findList()){
+									@if(empD.name == post.get("employees")){
+										<option selected>@empD.name</option>
+									}else{
+										<option>@empD.name</option>
+									}
+								}
+							</optgroup>
+						}
+					}
+					</th>
+					<th class="count">受信件数</th>
+
+					<th class="syosai">詳細</th>
+
+
+
+
+			</tr>
+		</table>
+	</form>
+
+</div>
+<table class="line"></table>
+<div class="ichiran_contents ichiran_width">
+	<table class= ichiran_table>
+		@for(i <- range){
+
+
+			<tr>
+				<td class="emp_cd">@emp.get(i).employees_cd</td>
+				<td class="department">@emp.get(i).department_id.department_name</td>
+				<td class="employees">@emp.get(i).name</td>
+				<td class="count">@countGC.findRec(emp.get(i)).size</td>
+				<th class="syosai"><form name="syousai" action="@routes.HomeController.valuation_detailedPost" target="_blank" method="POST">
+				<input type="hidden" name="user_id" value="@emp.get(i).employees_id" /><input type="hidden" name="start_date"  value="@post.get("start_date")">
+				<input type="hidden" name="end_date" value="@post.get("end_date")">
+				<input type="submit" value="詳細" /></form></th>
+			</tr>
+
+		}
+	</table>
+</div>
+<br>
+
+

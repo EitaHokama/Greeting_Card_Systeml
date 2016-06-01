@@ -2,9 +2,11 @@ package models;
 
 import com.avaje.ebean.Model;
 import com.avaje.ebean.Model.Find;
+import com.avaje.ebean.common.BeanList;
 
 import play.data.validation.Constraints.Required;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,8 +40,15 @@ public class Gratitude_Card extends Model {
 	public Category category_id;
 
 	@ManyToMany
-	public List<CaseStudy> cs= new ArrayList();
+	public List<CaseStudy> cs = new BeanList<>();
 
 
 	public static Find<Integer,Gratitude_Card> find = new Find<Integer,Gratitude_Card>(){};
+
+	public List<String> split(){
+
+		List<String> spr = Arrays.asList(card_content.split("\n",0));
+
+		return spr;
+	}
 }

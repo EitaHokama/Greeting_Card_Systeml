@@ -1,0 +1,33 @@
+@(loginForm: Form[AdLogin])
+
+@import helper._
+<head>
+
+	<meta charset="UTF-8">
+    <title>管理者ログイン画面</title>
+<SCRIPT type="text/javascript">
+</SCRIPT>
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/login.css")">
+
+
+</head>
+<html>
+    <body bgcolor="#29454d">
+    <div id="form-container">
+   <p  class="form-title"></p>
+   <div class="circle"><img src="@routes.Assets.versioned("images/Lock.png")" class ="lock"></div>
+   @if(loginForm.hasGlobalErrors){
+   		<p class = "error">
+   		   @loginForm.globalError.message
+   		</p>
+   		}
+        @form(routes.AuthController.adauthenticate()) {
+        <a  id="tab"><div id="name" tabindex="1">@inputText(loginForm("username"))</div></a>
+        <a  id="tab"><div id="name" tabindex="2">@inputPassword(loginForm("password"))</div></a>
+
+        <input type="submit"value="Login">
+        }
+        </div>
+
+    </body>
+</html>

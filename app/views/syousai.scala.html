@@ -1,0 +1,26 @@
+@(gc : Gratitude_Card)(par : String)
+@import views.html.template._
+@import controllers._
+@import models._
+
+
+@sdf= @{new java.text.SimpleDateFormat("YYYY/MM/dd")}
+
+@template("テスト"){
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
+	<!-- <script src="@routes.TestController.makeJS()"></script>-->
+	}{<b>
+	<div style="float: left;">@SelectGC.name.get("sender")　　@gc.sender_id.department_id.department_name 　@gc.sender_id.name</div>
+	<div style="text-align: right;">@sdf.format(gc.date)</div>
+	@SelectGC.name.get("receiver")　　@gc.receiver_id.department_id.department_name 　@gc.receiver_id.name <br><br>
+
+	@SelectGC.name.get("title")  : @gc.card_title <br></b>
+	<div class="syousai_contents" >
+
+	@for(spr <- gc.split()){
+		@spr<br>
+		}
+	</div>
+
+
+	}
