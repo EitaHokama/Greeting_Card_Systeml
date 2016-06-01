@@ -24,4 +24,9 @@ public class Administrators extends Model {
 
 
 	public static Find<Integer,Administrators> find = new Find<Integer,Administrators>(){};
+
+	public static Boolean authenticate(String username, String password) {
+        Administrators admin = Administrators.find.where().eq("login_id", username).findUnique();
+        return (admin != null && admin.pass.equals(password));
+    }
 }

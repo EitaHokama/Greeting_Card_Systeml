@@ -1,91 +1,21 @@
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])(emp: Employees)
 @import views.html.template._
 
 @template("査定詳細画面"){
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
 	}{
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/valuation.css")">
 
+<table border ="1">
+                   <tr><td><label for="name">対象者:</label></td><td><label for="name">@emp.name</label></td></tr>
+                   <tr><td><label for="name">社員ＩＤ：</label></td><td><label for="name">@emp.employees_cd</label></td></tr>
+</table>
+					<h1>査定詳細</h1><br>
+					<div class="count">受信件数: @gc.size 件</div>
 
-                   <label for="name">対象者:石川次郎</label><br>
-                   <label for="name">社員ＩＤ：</label>
-
-					<Div Align="center"><h1>査定詳細</h1></Div>
-
-					<form action="conf.php" method="post">
-					<dl>
-                         <form action="cgi-bin/formmail.cgi" method="post">
-
-
-                        <p>
-                        <Div Align="center">
-                        <label for="name">日付</label><br>
-                       　　　
-                       <select mame="年">
-                       <option value="年" >2016</option>
-                       </select>
-
-                       <select mame="月">
-                       <option value="月" >11</option>
-                       </select>
-
-                       </select>
-                       <select mame="日">
-                        <option value="日" >19</option>
-                        </select>
-	                    <label for="name">から</label>
-	                    　　　
-	                    <label for="name">カテゴリ</label>
-	                    <br>
-                        　　　
-                        <select mame="年">
-                        <option value="年" >2016</option>
-                        </select>
-                        <select mame="月">
-                        <option value="月" >12</option>
-                        </select>
-                        <select mame="日付">
-                        <option value="日" >19</option>
-                        </select>
-                        <label for="name">まで</label>
-
-                          <select name="カテゴリ">
-                         <option selected="selected"></option>
-                         <option value="デバック関係" >デバック関係</option>
-                         <option value="営業関係">営業関係</option>
-                         <option value="残業関係">残業関係</option>
-                         <option value="その他">その他</option>
-                         </select>
-                        </select>
-
-                        </Div>
-
-                        <Div Align="right">
-                        <select name="カテゴリ">
-                         <option selected="selected"></option>
-                         <option value="デバック関係" >デバック関係</option>
-                         <option value="営業関係">営業関係</option>
-                         <option value="残業関係">残業関係</option>
-                         <option value="その他">その他</option>
-                         </select></p>
-                        </Div>
-
-                        <Div Align="left">
-                         <label for="name">　　　　送信部署</label><br>
-                         <label for="name">検索</label>
-                         <select name="送信部署">
-                         <option selected="selected"></option>
-                         <option value="開発部" >開発部</option>
-                         <option value="営業部">営業部</option>
-                         <option value="人事部">人事部</option>
-                         <option value="その他">その他</option>
-                         </select>
-                         </Div>
-                          </form>
-
-
-
-
-
-
-
+	<form name="selectForm" action="@routes.HomeController.valuation_detailedPost()" method="POST">
+	<input type="hidden" name="user_id" value="@emp.employees_id" />
+		@ichiran(gc)(par)("日付範囲"::"送信部署" :: "送信者" :: "カテゴリ" :: "タイトル" :: "日付"  :: Nil)(pos)
 	}
 
 

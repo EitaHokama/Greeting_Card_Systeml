@@ -1,0 +1,15 @@
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])
+@import views.html.template._
+
+@onSideMenu("テスト")(""){
+
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
+	<!-- <script src="@routes.TestController.makeJS()"></script>-->
+	}{
+	<div class= "ichiran_width">
+
+	<form id="selectForm" name="selectForm" action="@routes.TestController.test2Post()" method="POST">
+		@par <br>
+
+		@ichiran(gc)(par)("日付範囲" :: "送信部署" :: "送信者" ::"受信部署" :: "受信者" :: "日付" :: "カテゴリ" :: "タイトル" :: "ピックアップ":: Nil)(pos)
+	}

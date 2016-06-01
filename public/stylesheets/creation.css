@@ -1,0 +1,48 @@
+h1 {
+text-align: left;
+}
+body{
+background-color :#8eb4d9;
+}
+/*äpÇÃä€Ç¢ê¸*/
+.line{
+margin-top:-15px;
+border: solid 1px #808080;
+ margin-left: auto;
+ margin-right: auto;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+width:95%;
+}
+.body_creation{
+height: 97%;
+position: relative;
+background-color :#ffffff;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+}
+#submit{
+position: absolute;
+font-weight:bold;
+color:#ffffff;
+font-size:20px;
+background-color :#8eb4d9;
+border: 3px #8eb4d9 solid;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+width: 200px;
+height: 54px;
+text-align: center;
+line-height: 54px;
+right:2px;
+bottom:3px;
+}
+#submit:focus{
+color:#8eb4d9;
+background-color :#ffffff;
+border: 3px #8eb4d9 solid;
+}
+textarea{
+margin-left:1px;
+font-size:20px;
+}

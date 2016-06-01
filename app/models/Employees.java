@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.Model.Find;
 
 import play.data.validation.Constraints.Required;
 
@@ -21,7 +22,7 @@ public class Employees extends Model {
 	public String name;
 	@ManyToOne
 	@Required
-	public Department depatrment_id;
+	public Department department_id;
 	@Required
 	public String login_id;
 	@Required
@@ -36,4 +37,11 @@ public class Employees extends Model {
 	@OneToMany(mappedBy="receiver_id")
 	public List<Gratitude_Card> receiver = new ArrayList<>();
 	public static Find<Integer,Employees> find = new Find<Integer,Employees>(){};
+
+
+	public static Boolean authenticate(String username, String password) {
+        Employees emp = Employees.find.where().eq("name", username).findUnique();
+        return (emp != null && emp.pass.equals(password));
+    }
+
 }

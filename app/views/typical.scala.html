@@ -1,0 +1,19 @@
+@(gc : List[Gratitude_Card])(par : String)(pos : Map[String,Array[String]])
+
+@busyo = @{models.Department.find.all}
+@cat = @{models.Category.find.all}
+
+@import views.html.template._
+
+@onSideMenu("代表的な事例の選択")(""){
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
+	}{
+			<h2>代表的な事例の選択</h2>
+	<div class= "ichiran_width">
+
+	<form id="selectForm" name="selectForm" action="@routes.HomeController.typicalPost()" method="POST">
+
+	@ichiran(gc)(par)("日付範囲" :: "送信部署" ::"受信部署" :: "日付" :: "カテゴリ" :: "タイトル" :: "ピックアップ":: Nil)(pos)
+
+
+	}

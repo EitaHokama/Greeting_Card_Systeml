@@ -1,8 +1,42 @@
-@(gc : Gratitude_Card ,cs : CaseStudy)
+@(gc : List[Gratitude_Card] ,cs : CaseStudy )
 @import views.html.template._
+@import java.text.SimpleDateFormat
+
+@sdf2 = @{new SimpleDateFormat("YYYY/MM/dd hh:mm")}
 
 @onSideMenu("テスト")(""){
 	}{
-		@cs.gc.get(0).card_title <br>
-	@gc.category_id.gc.get(0).sender_id.name
+
+	<h2 align=center>掲示板</h2>
+
+<table class="type11">
+	<tbody>
+		<tr>
+			<th align="center">日付</th>
+			<th align="center">送信者</th>
+			<th align="center">受信者</th>
+			<th align="center">カテゴリー</th>
+			<th align="center">タイトル</th>
+		</tr>
+	</tbody>
+</table>
+
+		@for(card <- gc){
+		<table class="type11">
+		  <tr>
+			<td>@sdf2.format(card.date)</td>
+			<td>@card.sender_id.name</td>
+			<td>@card.receiver_id.name</td>
+			<td>@card.category_id.category_name</td>
+			<td>@card.card_title</td>
+		  </tr>
+		</table>
+		}
+		<h2>データ追加</h2>
+		<form action="@routes.HomeController.createTest()" method="POST">
+		  <p>
+		    入力フォーム: <input type="text" name="name" />
+		  </p>
+		  <input type="submit" value="Create" />
+		</form>
 	}

@@ -1,0 +1,23 @@
+h1{
+text-align: center;
+}
+#table_day{
+width:100%;
+	margin-left: auto;
+	margin-right: auto;
+background-color :red;
+	}
+#table_category{
+	width:100%;
+margin-left: auto;
+background-color :blue;
+	}
+#table_busyo{
+width:100%;
+	margin-right: auto;
+background-color :yellow;
+	}
+
+#table_table{
+	width:100%;
+}

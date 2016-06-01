@@ -36,7 +36,7 @@ create sequence department_seq;
 create table employees (
   employees_id                  integer not null,
   name                          varchar(255),
-  depatrment_id_department_id   integer,
+  department_id_department_id   integer,
   login_id                      varchar(255),
   pass                          varchar(255),
   permissions                   varchar(255),
@@ -64,8 +64,8 @@ create table gratitude_card_case_study (
   constraint pk_gratitude_card_case_study primary key (gratitude_card_card_id,case_study_case_id)
 );
 
-alter table employees add constraint fk_employees_depatrment_id_department_id foreign key (depatrment_id_department_id) references department (department_id) on delete restrict on update restrict;
-create index ix_employees_depatrment_id_department_id on employees (depatrment_id_department_id);
+alter table employees add constraint fk_employees_department_id_department_id foreign key (department_id_department_id) references department (department_id) on delete restrict on update restrict;
+create index ix_employees_department_id_department_id on employees (department_id_department_id);
 
 alter table gratitude_card add constraint fk_gratitude_card_sender_id_employees_id foreign key (sender_id_employees_id) references employees (employees_id) on delete restrict on update restrict;
 create index ix_gratitude_card_sender_id_employees_id on gratitude_card (sender_id_employees_id);
@@ -85,8 +85,8 @@ create index ix_gratitude_card_case_study_case_study on gratitude_card_case_stud
 
 # --- !Downs
 
-alter table employees drop constraint if exists fk_employees_depatrment_id_department_id;
-drop index if exists ix_employees_depatrment_id_department_id;
+alter table employees drop constraint if exists fk_employees_department_id_department_id;
+drop index if exists ix_employees_department_id_department_id;
 
 alter table gratitude_card drop constraint if exists fk_gratitude_card_sender_id_employees_id;
 drop index if exists ix_gratitude_card_sender_id_employees_id;
