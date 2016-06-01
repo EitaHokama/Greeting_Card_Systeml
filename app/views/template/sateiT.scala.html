@@ -85,7 +85,9 @@
 				<td class="employees">@emp.get(i).name</td>
 				<td class="count">@emp.get(i).receiver.size</td>
 				<th class="syosai"><form name="syousai" action="@routes.HomeController.valuation_detailedPost" target="_blank" method="POST">
-				<input type="hidden" name="user_id" value="@emp.get(i).employees_id" /><input type="submit" value="詳細" /></form></th>
+				<input type="hidden" name="user_id" value="@emp.get(i).employees_id" /><input type="hidden" name="start_date"  value="@post.get("start_date")">
+				<input type="hidden" name="end_date" value="@post.get("end_date")">
+				<input type="submit" value="詳細" /></form></th>
 			</tr>
 
 		}
