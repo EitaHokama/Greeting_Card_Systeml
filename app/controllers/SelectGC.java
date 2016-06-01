@@ -41,7 +41,7 @@ public class SelectGC {
 		}
 	};
 
-	SelectGC(Map<String, String[]> params){
+	public SelectGC(Map<String, String[]> params){
 		this.params = params;
 	}
 

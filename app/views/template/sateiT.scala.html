@@ -11,6 +11,7 @@
 @{c.setTime(new Date())}
 @nowCS = @{CaseStudy.find.where().eq("year",c.get(Calendar.YEAR)).eq("month",c.get(Calendar.MONTH)+1).findUnique()}
 @post = @{SelectEmp.trans(pos)}
+@countGC = @{new SelectGC(pos)}
 
 
 <!-- gc ソート、絞り込み済み感謝カードリスト　par 権限 show　一覧表示項目(左から) -->
@@ -78,11 +79,12 @@
 	<table class= ichiran_table>
 		@for(i <- range){
 
+
 			<tr>
 				<td class="emp_cd">@emp.get(i).employees_cd</td>
 				<td class="department">@emp.get(i).department_id.department_name</td>
 				<td class="employees">@emp.get(i).name</td>
-				<td class="count">@emp.get(i).receiver.size</td>
+				<td class="count">@countGC.findRec(emp.get(i)).size</td>
 				<th class="syosai"><form name="syousai" action="@routes.HomeController.valuation_detailedPost" target="_blank" method="POST">
 				<input type="hidden" name="user_id" value="@emp.get(i).employees_id" /><input type="hidden" name="start_date"  value="@post.get("start_date")">
 				<input type="hidden" name="end_date" value="@post.get("end_date")">
