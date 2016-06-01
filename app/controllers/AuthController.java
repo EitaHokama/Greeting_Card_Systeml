@@ -44,11 +44,11 @@ public class AuthController extends Controller{
 
 			if(per.equals("人事")){
 			HomeController zin = new HomeController();
-			return zin.test();
+			return zin.bbs();
 			}
 
 			HomeController kei = new HomeController();
-			return kei.bbs();
+			return kei.typical();
 		}
 	}
 
@@ -77,8 +77,8 @@ public class AuthController extends Controller{
 			AdLogin login = form.get();
 			session("login",login.username);
 
-			TestController test = new TestController();
-			return test.test2();
+			HomeController test = new HomeController();
+			return test.valuation();
 		}
 
 	}

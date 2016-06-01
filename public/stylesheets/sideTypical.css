@@ -1,0 +1,34 @@
+
+#button-box input#button_submit.sentaku{
+background:#487ca3;
+color:#ffffff;
+font-size:25px;
+border-style:none;
+height:100%;
+width:100%;
+text-decoration:none;
+margin: 0 auto;
+background-position:left;
+}
+
+td.sender_department{
+width:15%;
+
+}
+
+td.receiver_department{
+width:15%;
+}
+
+td.date{
+width:15%;
+}
+td.card_title{
+width:50%;
+}
+td.category{
+width:15%;
+}
+td.search{
+	width:10%;
+}

@@ -1,99 +1,94 @@
-th.sender_department{
-	margin: 0 auto;
+.ihiran{
+margin:0 auto;
+width:96%;}
+td.sender_department{
+width:10%;
+}
+td.sender{
+width:10%;
+}
+td.receiver_department{
+width:10%;
+}
+td.receiver{
+width:10%;
+}
+td.date{
+width:20%;
+}
+td.card_title{
+width:40%;
+}
+td.category{
+width:10%;
 
 }
-th.sender{
-	margin: 0 auto;
-}
-th.receiver_department{
-	margin: 0 auto;
-}
-th.receiver{
-	margin: 0 auto;
-}
-th.date{
-	margin: 0 auto;
-}
-th.card_title
-width:	290px;
-	text-align: center;
-}
-th.category{
+td.search{
 
-	 padding :0px 17px 0px 0px;
 }
-th.search{
-	 padding :0px 1.6% 0px 0px;
-}
-th.pickup{
-	margin: 0 auto;
+.pu{
+width:64px;
 }
 .sender_department{
-	width:120px;
-text-align: center;
+
 }
 .sender{
-	text-align: center;
-	width:100px;
+
 }
 .receiver_department{
-	text-align: center;
-	width:120px;
 
 }
 .receiver{
-	width:100px;
-text-align: center;
+
 }
 .date{
-	width:120px;
-text-align: center;
+
 }
 .card_title{
 
-	width:	300px;
-text-align: center;
+}
+
+.category{
 
 }
-.category{
-	width:80px;
-text-align: center;
+.search{
+	width:30px;
 }
-.pickup{
-	width:80px;
+.pickup{margin:0 auto;
+width:10%x;
 }
 .ichiran_width{
-	width: 95%;
-	margin: 0 auto;
 }
 table.ichiran_index{
-
-width:100%;
+border-collapse: collapse;
+border-spacing: 0;
+text-align: center;
+width:98.2%;
+height:10%;
 }
 .ichiran_table{
+text-align: center;
+color:#ffffff;
 width:100%;
 }
 .ichiran_value{
-	text-align: left;
 }
 .ichiran_contents{
-	height:250px; background-color:#eeeeee; overflow-y:scroll;
-	margin: 0 auto;
+height:200px; background-color:#eeeeee; overflow-y:scroll;
+margin: 0 auto;
 }
 .syousai_contents{
-	height:200px;background-color:#eeeeee; overflow:scroll;
-	margin: 0 auto;
+height:200px;background-color:#eeeeee; overflow:scroll;
+margin: 0 auto;
 }
 .select_date{
-	margin: 0 auto;
+margin: 0 auto;
 }
 iframe{
-	width:600px; height:300px;
-	margin: 0 auto;
-	text-align: cneter;
+width:600px; height:300px;
+margin: 0 auto;
+text-align: cneter;
 }
-
-
 td.card_title{
 text-align: cneter; overflow: hidden;
 }
@@ -105,7 +100,7 @@ border: solid 3px #808080;
 -webkit-border-radius: 5px;
 -moz-border-radius:5px;
 border-radius:5px;
-width:95%;
+width:100%;
 }
 /*カードを隙間なく並べる*/
 .ichiran_table{
@@ -114,8 +109,8 @@ border-collapse: collapse;
 border-spacing: 0;
 }
 /*表の色を1行ごとに変える*/
-.ichiran_table tr:nth-of-type(odd) td{background-color:#8eb4d9;border: 2px }
-.ichiran_table tr:nth-of-type(even) td{background-color:#487ca3;border: 2px }
+.ichiran_table tr:nth-of-type(odd) td{background-color:#8eb4d9;border: 2px ;}
+.ichiran_table tr:nth-of-type(even) td{background-color:#487ca3;border: 2px ;}
 /*詳細ボタンがマウスオーバー&押された時*/
 .ichiran_table input:focus{background-color:#c0c0c0;}
 .ichiran_table input:hover{background-color:#c0c0c0;}

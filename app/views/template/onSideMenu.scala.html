@@ -10,25 +10,28 @@
 
 	}{
 	<nav>
-     <div id="button-box">
 
+     <div id="button-box">
      <table class="sidemenu-table"  cellspacing="0" cellpadding="0">
 
-			<tr><td><input type="button" value="カード作成"   style="background-image: url('@routes.Assets.versioned("images/hito.png")');      background-repeat:no-repeat;" id="button_submit" onClick="window.open('@routes.CreationController.creation()', '', 'width=500,height=560'); return false;"><br></td></tr>
-			<tr><td><input type="button" value="掲示板"       style="background-image: url('@routes.Assets.versioned("images/bbs.png")');       background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.bbs'"><br></td></tr>
-	        <tr><td><input type="button" value="受信箱"       style="background-image: url('@routes.Assets.versioned("images/receive.png")');   background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.MailController.receive'"><br></td></tr>
-	        <tr><td><input type="button" value="送信箱"       style="background-image: url('@routes.Assets.versioned("images/trans.png")');     background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.MailController.trans'"><br></td></tr>
-	        <tr><td><input type="button" value="検索"         style="background-image: url('@routes.Assets.versioned("images/search.png")');    background-repeat:no-repeat;" id="button_submit"><br></td></tr>
-			<tr><td><input type="button" value="事例の選択"   style="background-image: url('@routes.Assets.versioned("images/sentaku.png")');   background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.typical()'"><br></td></tr>
-			<tr><td><input type="button" value="査定"         style="background-image: url('@routes.Assets.versioned("images/satei.png")');     background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.valuation()'"><br></td></tr>
-			<tr><td><input type="button" value="ピックアップ" style="background-image: url('@routes.Assets.versioned("images/good.png")');      background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.typical()'"><br></td></tr>
-			<tr><td><input type="button" value="経営委掲示板" style="background-image: url('@routes.Assets.versioned("images/bbs_detail.png")');background-repeat:no-repeat;" id="button_submit"><br></td></tr>
-			<tr><td><input type="button" value="ログアウト"   style="background-image: url('@routes.Assets.versioned("images/logout.png")');    background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.AuthController.logout'"><br></td></tr>
+	<tr><td><div class="System_name" ><a  id="Greeting">感謝カードシステム</a></div></td></tr>
+	<tr><td><input type="button" value="カード作成"   style="background-image: url('@routes.Assets.versioned("images/hito.png")');      background-repeat:no-repeat;" id="button_submit"  class="hito" onClick="window.open('@routes.CreationController.creation()', '', 'width=500,height=560'); return false;"><br></td></tr>
+	<tr><td><input type="button" value="掲示板"       style="background-image: url('@routes.Assets.versioned("images/bbs.png")');       background-repeat:no-repeat;" id="button_submit"  class="bbs" onClick="location.href='@routes.HomeController.bbs'"><br></td></tr>
+	<tr><td><input type="button" value="受信箱"       style="background-image: url('@routes.Assets.versioned("images/receive.png")');   background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.MailController.receive'" class="receive"><br></td></tr>
+	<tr><td><input type="button" value="送信箱"       style="background-image: url('@routes.Assets.versioned("images/trans.png")');     background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.MailController.trans'"class="trans"><br></td></tr>
+
+	<tr><td><input type="button" value="事例の選択"   style="background-image: url('@routes.Assets.versioned("images/sentaku.png")');   background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.typical()'"class="sentaku"><br></td></tr>
+	<tr><td><input type="button" value="査定"         style="background-image: url('@routes.Assets.versioned("images/satei.png")');     background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.valuation()'"class="valuation"><br></td></tr>
+	<tr><td><input type="button" value="ピックアップ" style="background-image: url('@routes.Assets.versioned("images/good.png")');      background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.typical()'"class="good"><br></td></tr>
+	<tr><td><input type="button" value="経営委掲示板" style="background-image: url('@routes.Assets.versioned("images/bbs_detail.png")');background-repeat:no-repeat;" id="button_submit"class="bbs_derail"><br></td></tr>
+	<tr><td><input type="button" value="ログアウト"   style="background-image: url('@routes.Assets.versioned("images/logout.png")');    background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.AuthController.logout'"class="logout"><br></td></tr>
+
 
 	 </table>
       </div>
 	</nav>
 		<section>
+
 			@content
 		</section>
 

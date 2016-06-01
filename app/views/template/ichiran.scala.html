@@ -28,14 +28,15 @@
 			}
 		}
 		</div>
-		<table class= "ichiran_index">
+		<table class= "ihiran"><tr><td>
+		<table class= "ichiran_index" >
 			<tr>
 
 
 
 				@for(str <- show){
 					@if(str == SelectGC.name.get("sender_department")){
-						<th class="sender_department"><select name="sender_department" onChange="this.form.submit()" />
+						<td class="sender_department"><select name="sender_department" onChange="this.form.submit()" />
 						<option>@SelectGC.name.get("sender_department")</option>
 							@for(dep <- Department.find.all()){
 								@if(dep.department_name == post.get("sender_department")){
@@ -48,7 +49,7 @@
 
 					}
 					@if(str == SelectGC.name.get("receiver_department")){
-						<th class="receiver_department"><select name="receiver_department" onChange="this.form.submit()" />
+						<td class="receiver_department"><select name="receiver_department" onChange="this.form.submit()" />
 						<option>@SelectGC.name.get("receiver_department")</option>
 							@for(dep <- Department.find.all()){
 								@if(dep.department_name == post.get("receiver_department")){
@@ -60,7 +61,7 @@
 						</select></th>
 					}
 					@if(str == SelectGC.name.get("sender")){
-						<th class="sender"><select name="sender" onChange="this.form.submit()" />
+						<td class="sender"><select name="sender" onChange="this.form.submit()" />
 						<option>@SelectGC.name.get("sender")</option>
 
 						@for(dep <- Department.find.all()){
@@ -79,7 +80,7 @@
 						</th>
 					}
 					@if(str == SelectGC.name.get("receiver")){
-						<th class="receiver"><select name="receiver" onChange="this.form.submit()" />
+						<td class="receiver"><select name="receiver" onChange="this.form.submit()" />
 						<option>@SelectGC.name.get("receiver")</option>
 
 						@for(dep <- Department.find.all()){
@@ -98,13 +99,13 @@
 						</th>
 					}
 					@if(str == SelectGC.name.get("date")){
-						<th class="date">@SelectGC.name.get("date")</th>
+						<td class="date">@SelectGC.name.get("date")</th>
 					}
 					@if(str == SelectGC.name.get("title")){
-						<th class="card_title">@SelectGC.name.get("title")</th>
+						<td class="card_title">@SelectGC.name.get("title")</th>
 					}
 					@if(str== SelectGC.name.get("category")){
-						<th class="category" ><select name="category" onChange="this.form.submit()" />
+						<td class="category" ><select name="category" onChange="this.form.submit()" />
 						<option >@SelectGC.name.get("category")</option>
 							@for(cat <- Category.find.all()){
 								@if(cat.category_name == post.get("category")){
@@ -115,7 +116,7 @@
 							}
 					}
 					@if(str == "ピックアップ"){
-						<th class="pickup"><select name="pickup" onChange="this.form.submit()" />
+						<td class="pickup"><select name="pickup" onChange="this.form.submit()" />
 						<option>すべて</optiron>
 							@for(pick <- SelectGC.name.get("selected") :: Nil){ @{/*SelectGC.name.get("removed") */}
 								@if(pick == post.get("pickup")){
@@ -127,7 +128,9 @@
 						</th>
 					}
 				}
-			<th class="search"><!--<input type="submit" value="更新" />--></th>
+
+			<td class="search">　　<!--<input type="submit" value="更新" />--></td>
+
 
 			</tr>
 		</table>
@@ -136,7 +139,7 @@
 </div>
 <table class="line"></table>
 <div class="ichiran_contents ichiran_width">
-	<table class= ichiran_table>
+	<table class= ichiran_table align="center">
 		@for(i <- range){
 
 			<tr>
@@ -158,19 +161,22 @@
 					}else{@if(str=="ピックアップ"){
 						<td class="pickup">
 							@if(gc.get(i).cs.contains(nowCS)){
-								<button form="selectForm" type="submit" name="del_pickup" value="@gc.get(i).card_id" >解除</button>
+								<button form="selectForm" type="submit" name="del_pickup" value="@gc.get(i).card_id" class="pu">解除</button>
 							}else{
-								<button form="selectForm" type="submit" name="sel_pickup" value="@gc.get(i).card_id" >登録</button>
+								<button form="selectForm" type="submit" name="sel_pickup" value="@gc.get(i).card_id" class="pu">登録</button>
 							}
 						</td>
 
 					}}}}}}}}
 				}
-			<th><form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
+			<th class="search"><form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
 			<input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></form></th>
 			</tr>
 
 		}
+	</table>
+	</td>
+	</tr>
 	</table>
 </div>
 <br>
