@@ -53,7 +53,7 @@ public class AuthController extends Controller{
 			}
 
 			HomeController kei = new HomeController();
-			return kei.typical();
+			return kei.bbs();
 		}
 	}
 

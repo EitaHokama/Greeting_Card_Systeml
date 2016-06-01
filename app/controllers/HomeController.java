@@ -1,7 +1,7 @@
 package controllers;
 
 import models.CaseStudy;
-
+import models.Department;
 import models.Employees;
 import models.Gratitude_Card;
 import models.Login;
@@ -57,10 +57,13 @@ private FormFactory formFactory;
     	return ok(bbs.render(gc, "",params));
     }
     public Result valuation() {
+    	if("人事".equals(Employees.find.byId(Integer.valueOf(session("empId"))).permissions)){
     	//Employees emp = Employees.find.byId(1);
     	Gratitude_Card gc = Gratitude_Card.find.byId(1);
     	CaseStudy cs = CaseStudy.find.byId(1);
     	return ok(valuation.render(gc,cs));
+    	}
+    	return ok(parerr.render());
     }
 
     public Result test(){
@@ -81,17 +84,18 @@ private FormFactory formFactory;
     	return ok(typical.render(gc,cs));
     }*/
     public Result typical(){
-    	if(session("depId").equals("人事6")){
-
+    	//部署でページの表示を制限
+    	//Employees.find.byId(Integer.valueOf(session("empId"))).parmissions
+    	if("人事".equals(Employees.find.byId(Integer.valueOf(session("empId"))).permissions)){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
     	Map map = new HashMap<String, String[]>();
     	gc= Gratitude_Card.find.all();
     	SelectGC sel = new SelectGC(map);
     	gc = sel.find();
-
     	return ok(typical.render(gc, "", map));
     	}
-    	return ok("権限がありません。");
+
+    	return ok(parerr.render());
     }
     public Result typicalPost(){
     	List<Gratitude_Card> gc ;
@@ -123,6 +127,10 @@ private FormFactory formFactory;
     	Employees emp = formFactory.form(Employees.class).bindFromRequest().get();
     	emp.save();
     	return redirect(routes.HomeController.test());
+    }
+
+    public Result parerr(){
+    	return ok(parerr.render());
     }
 
 }
