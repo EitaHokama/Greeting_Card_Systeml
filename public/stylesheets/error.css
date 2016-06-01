@@ -9,10 +9,9 @@ HTML{
 	scrollbar-track-color: #fff;
 
 }
-body{
-	font-size: 13px;
+body{	font-family: Verdana;
+
 	color: #444;
-	font-family: Verdana;
 	letter-spacing: 1px;
 	background-color: #d7e2ef;
 	margin: 0px;
@@ -28,23 +27,23 @@ A {color : #D56300; text-decoration : underline; }
 	text-align: center;
 }
 h1{
-	font-size: 100px;
-	font-family: Verdana;
-	font-weight: bold;
+	font-size: 80px;
+
+
 	letter-spacing: 3px;
 	border-bottom: dashed 1px #666;
 	margin:  10px 0px 50px 0px;
 	padding: 2px 30px 2px 10px;
 }
 h2{
-	font-size: 60px;
+	font-size: 50px;
 	font-family: Verdana;
 	font-weight: normal;
 	letter-spacing: 2px;
 	margin:  40px 0px 20px 0px;
 	padding: 2px 10px 2px 0px;}
 
-	.red{color:#0080ff;}
+	.red{color:#0080ff;	font-family: Verdana;font-weight: bold;}
 h3{
 	font-size: 30px;
 	font-family: Verdana;
@@ -55,13 +54,12 @@ h3{
 	padding: 2px 30px 2px 10px;
 }
 h4{
-	font-size: 40px;
+	font-size: 30px;
 	font-family: Verdana;
 	font-weight: bold;
-	letter-spacing: 3px;
+
 	border-bottom: dashed 1px #666;
-	margin:  10px 0px 50px 0px;
-	padding: 2px 30px 2px 10px;
+
 }
 .copyright{
 	font-size: 11px;
@@ -70,4 +68,10 @@ h4{
 	text-align: right;
 	margin:  5px 0px 10px 0px;
 	padding: 0px 0px 0px 0px;
+}
+ul{list-style:none;
+	font-size: 30px;
+	font-weight: bold;
+	letter-spacing: 3px;
+
 }
