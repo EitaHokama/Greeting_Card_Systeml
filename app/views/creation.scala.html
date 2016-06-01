@@ -1,4 +1,4 @@
-
+@(errLoc: String, errStr: String)
 @import views.html.template._
 @import models._
 @cat = @{models.Category.find.all()}
@@ -14,18 +14,21 @@
 
 					<h1>感謝カード作成</h1>
 					<table class="line"></table>
-					<form name="form1" method="get" onsubmit="gettext(this)">
+					@if(errLoc=="success"){<div class="error">@errStr</div>}
+					<form name="form1" onsubmit="gettext(this)" action="@routes.CreationController.creationPost()" method="POST">
 					<dl>
-                         <form action="cgi-bin/formmail.cgi" method="post">
+
                          <p>カテゴリ
+                         @if(errLoc=="カテゴリ"){<div class="error">@errStr</div>}
                          <select name="カテゴリ">
                          <option selected="selected"></option>
                          @for(ct <- cat){
                          	<option > @ct.category_name </option>
                          }
                          </select></p>
-                          </form>
+
                         <p><label for="name">送る相手の部署</label>
+
                          <select name="sel_bunruiA" onChange="selectBunruiA(this)">
                          <option value="">部署</option>
                          </select>
@@ -35,15 +38,16 @@
                          　　　　　　名前
                          <select name="sel_bunruiB" width="100px"><option value="">社員</option></select>
                          <input type="hidden" name="search" value=""></input>
-                         </form>
+                         @if(errLoc=="sel_bunruiA"){<div class="error">@errStr</div>}
+                         @if(errLoc=="sel_bunruiB"){<div class="error">@errStr</div>}
+
 
                          <p>
                          <label for="title">件名</label>
-                         <input type="text" id="title" name="title" value=""></p>
+                         <input type="text" id="title" name="title" value="">@if(errLoc=="title"){<div class="error">@errStr</div>}</p>
                          <p>ご感想<br>
 
-<textarea name="kanso" rows="12" cols="40">
-                         </textarea></p>
+<textarea name="kanso" rows="12" cols="40" ></textarea></p>
                          </dl>
 
                      <input type="submit" id="submit" value="送信">
@@ -53,26 +57,21 @@
 
 	}
 	<script type="text/javascript" language="JavaScript">
-
     //最初の分類リスト (分類Aリスト)を定義
-    var bunruiA = new Array("部署1","部署2","部署3","部署4","部署5","人事6");
-
+    var bunruiA = new Array();
+    @for(dep <- Department.find.all()){
+    	bunruiA.push("@dep.department_name");
+    }
     // 次の分類(分類Aごとの分類Bリスト)を定義
     var bunruiB = new Array();
-
     @for(dep <- Department.find.all()){
-
     	bunruiB["@dep.department_name"]= new Array();
-    			@for(emp <- Employees.find.where().eq("department_id", dep).findList()){
+    			@for(emp <- Employees.find.where().eq("del_flag",0).eq("department_id", dep).findList()){
     				bunruiB["@dep.department_name"].push("@emp.name");
     			}
     }
-
-
-
     // 分類Aの選択リストを作成
     createSelection( form1.elements['sel_bunruiA'], "部署", bunruiA, bunruiA);
-
     ////////////////////////////////////////////////////
     //
     // 選択ボックスに選択肢を追加する関数
@@ -82,7 +81,6 @@
         selObj.length++;
         selObj.options[ selObj.length - 1].value = myValue ;
         selObj.options[ selObj.length - 1].text  = myText;
-
     }
     /////////////////////////////////////////////////////
     //
@@ -108,7 +106,6 @@
         // 選択肢を動的に生成
         createSelection(form1.elements['sel_bunruiB'], "社員",
                 bunruiB[obj.value], bunruiB[obj.value]);
-
     }
     /////////////////////////////////////////////////
     // submit前の処理
@@ -119,10 +116,5 @@
         form1.elements['search'].value = a+' AND '+b;
         alert(form1.elements['search'].value );
     }
-
-
 </script>
-
-
-
 
