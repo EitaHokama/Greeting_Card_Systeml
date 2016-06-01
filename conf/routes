@@ -19,7 +19,8 @@ POST     /bbs                           controllers.HomeController.bbsPost
 GET		/test						controllers.HomeController.test()
 
 
-GET		/creation						controllers.HomeController.creation()
+GET		/creation						controllers.CreationController.creation()
+POST	/creation						controllers.CreationController.creationPost()
 
 GET		/kanri						controllers.HomeController.kanri()
 

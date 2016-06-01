@@ -14,7 +14,7 @@
 
      <table class="sidemenu-table"  cellspacing="0" cellpadding="0">
 
-			<tr><td><input type="button" value="カード作成"   style="background-image: url('@routes.Assets.versioned("images/hito.png")');      background-repeat:no-repeat;" id="button_submit" onClick="window.open('@routes.HomeController.creation()', '', 'width=500,height=560'); return false;"><br></td></tr>
+			<tr><td><input type="button" value="カード作成"   style="background-image: url('@routes.Assets.versioned("images/hito.png")');      background-repeat:no-repeat;" id="button_submit" onClick="window.open('@routes.CreationController.creation()', '', 'width=500,height=560'); return false;"><br></td></tr>
 			<tr><td><input type="button" value="掲示板"       style="background-image: url('@routes.Assets.versioned("images/bbs.png")');       background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.HomeController.bbs'"><br></td></tr>
 	        <tr><td><input type="button" value="受信箱"       style="background-image: url('@routes.Assets.versioned("images/receive.png")');   background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.MailController.receive'"><br></td></tr>
 	        <tr><td><input type="button" value="送信箱"       style="background-image: url('@routes.Assets.versioned("images/trans.png")');     background-repeat:no-repeat;" id="button_submit" onClick="location.href='@routes.MailController.trans'"><br></td></tr>

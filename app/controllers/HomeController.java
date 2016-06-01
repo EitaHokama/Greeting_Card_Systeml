@@ -1,14 +1,20 @@
 package controllers;
 
 import models.CaseStudy;
-
+import models.Category;
+import models.Department;
 import models.Employees;
 import models.Gratitude_Card;
 import play.mvc.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 import java.util.HashMap;
 import javax.inject.Inject;
+
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.SqlRow;
+
 import views.html.*;
 import java.text.SimpleDateFormat;
 import play.data.Form;
@@ -99,13 +105,6 @@ private FormFactory formFactory;
     	return ok(typical.render(gc, params.get("start_date")[0],params));
     }
 
-    public Result creation() {
-    	///DEPARTMENT DT = DEPARTMENT.find.byId(1);
-    	//CATEGORY CG = CATEGORY.find.byId(1);
-    	//return ok(test.render(gc,cs));
-    	return ok(creation.render());
-    }
-
     public Result kanri() {
         return ok(kanri.render());
 
@@ -121,4 +120,3 @@ private FormFactory formFactory;
     }
 
 }
-
