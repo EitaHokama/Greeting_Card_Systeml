@@ -5,6 +5,7 @@ import models.Category;
 import models.Department;
 import models.Employees;
 import models.Gratitude_Card;
+import models.Login;
 import play.mvc.*;
 import java.util.List;
 import java.util.Map;
@@ -68,15 +69,25 @@ private FormFactory formFactory;
     	return ok(bbs.render(gc, "",params));
     }
     public Result valuation() {
-    	//Employees emp = Employees.find.byId(1);
-    	HashMap map = new HashMap<String,String[]>();
-    	SelectGC.thisYear(map);
+    	try{
+	    	if("人事".equals(Employees.find.byId(Integer.valueOf(session("empId"))).permissions)){
+	    	//Employees emp = Employees.find.byId(1);
 
-    	SelectEmp sel = new SelectEmp(map);
 
-    	List<Employees> emp = sel.find();
+	    	HashMap map = new HashMap<String,String[]>();
+	    	SelectGC.thisYear(map);
 
-    	return ok(valuation.render(emp,"",map));
+	    	SelectEmp sel = new SelectEmp(map);
+
+	    	List<Employees> emp = sel.find();
+
+	    	return ok(valuation.render(emp,"",map));
+	    	}
+    	}catch(Exception e){
+
+    	}
+    	return ok(parerr.render());
+
     }
     public Result valuationPost() {
     	//Employees emp = Employees.find.byId(1);
@@ -106,6 +117,9 @@ private FormFactory formFactory;
     	return ok(typical.render(gc,cs));
     }*/
     public Result typical(){
+    	//部署でページの表示を制限
+    	//Employees.find.byId(Integer.valueOf(session("empId"))).parmissions
+    	if("人事".equals(Employees.find.byId(Integer.valueOf(session("empId"))).permissions)){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
     	HashMap map = new HashMap<String, String[]>();
 
@@ -114,8 +128,10 @@ private FormFactory formFactory;
     	SelectGC sel = new SelectGC(map);
 
     	gc = sel.find();
-
     	return ok(typical.render(gc, "", map));
+    	}
+
+    	return ok(parerr.render());
     }
     public Result typicalPost(){
     	List<Gratitude_Card> gc ;
@@ -152,6 +168,10 @@ private FormFactory formFactory;
     	Employees emp = formFactory.form(Employees.class).bindFromRequest().get();
     	emp.save();
     	return redirect(routes.HomeController.test());
+    }
+
+    public Result parerr(){
+    	return ok(parerr.render());
     }
 
 }

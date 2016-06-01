@@ -58,3 +58,4 @@ POST	/ichiran/syousai			controllers.TestController.syousai()
 GET 	/adlogin					controllers.AuthController.adindex()
 POST 	/adlogin					controllers.AuthController.adauthenticate()
 
+GET		/pererr						controllers.HomeController.parerr()

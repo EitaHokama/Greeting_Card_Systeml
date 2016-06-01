@@ -21,12 +21,12 @@
    		   @loginForm.globalError.message
    		</p>
    		}
-<div id="login_foam">
+   		<div id = "login_foam">
         @form(routes.AuthController.authenticate()) {
         <a  id="tab"><div id="name" tabindex="1">@inputText(loginForm("username"))</div></a>
         <a  id="tab"><div id="name" tabindex="2">@inputPassword(loginForm("password"))</div></a>
-</div>
-        <input type="submit"value="Login" class="submit-button"><br><br>
+		</div>
+        <input type="submit"value="Login" class = "submit-button"><br><br>
 
         }
         </div>
