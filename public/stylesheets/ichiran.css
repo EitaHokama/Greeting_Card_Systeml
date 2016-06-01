@@ -1,4 +1,4 @@
-.ihiran{width:95%;}
+.ihiran{width:96%;}
 td.sender_department{
 width:10%;
 
@@ -16,7 +16,7 @@ td.date{
 width:20%;
 }
 td.card_title{
-width:30%;
+width:40%;
 }
 td.category{
 width:10%;
@@ -51,7 +51,7 @@ width:50px;
 
 }
 .pickup{
-
+width:10%x;
 }
 .ichiran_width{
 
@@ -64,7 +64,7 @@ table.ichiran_index{
 	border-collapse: collapse;
 border-spacing: 0;
 text-align: center;
-width:99%;
+width:98%;
 height:10%;
 }
 .ichiran_table{ border: solid 3px #0080ff;
