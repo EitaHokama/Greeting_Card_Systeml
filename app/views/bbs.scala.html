@@ -3,16 +3,10 @@
 @cat = @{models.Category.find.all}
 @emp = @{models.Employees.find.all}
 @onSideMenu("掲示板")(""){
-
 <link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
 <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/sideBbs.css")">
 	}{
-
-
 	<form id="selectForm" name="selectForm" action="@routes.HomeController.bbsPost" method="POST">
 		@par <br>
-
 		@ichiran(gc)(par)("日付" :: "カテゴリ" :: "送信部署" :: "送信者" ::"受信部署" :: "受信者" :: "タイトル" :: Nil)(pos)
-
-
 	}

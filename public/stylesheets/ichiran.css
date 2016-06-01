@@ -1,7 +1,8 @@
-.ihiran{width:96%;}
+.ihiran{
+margin:0 auto;
+width:96%;}
 td.sender_department{
 width:10%;
-
 }
 td.sender{
 width:10%;
@@ -26,7 +27,7 @@ td.search{
 width:5%;
 }
 .pu{
-width:50px;
+width:64px;
 }
 .sender_department{
 
@@ -50,50 +51,41 @@ width:50px;
 .category{
 
 }
-.pickup{
+.pickup{margin:0 auto;
 width:10%x;
 }
 .ichiran_width{
-
 }
 table.ichiran_index{
-
-
-
-	border: solid 3px #ff0000;
-	border-collapse: collapse;
+border-collapse: collapse;
 border-spacing: 0;
 text-align: center;
-width:98%;
+width:98.2%;
 height:10%;
 }
-.ichiran_table{ border: solid 3px #0080ff;
+.ichiran_table{
 text-align: center;
-	color:#ffffff;
+color:#ffffff;
 width:100%;
-
 }
 .ichiran_value{
-
 }
 .ichiran_contents{
-	height:250px; background-color:#eeeeee; overflow-y:scroll;
-	margin: 0 auto;
+height:200px; background-color:#eeeeee; overflow-y:scroll;
+margin: 0 auto;
 }
 .syousai_contents{
-	height:200px;background-color:#eeeeee; overflow:scroll;
-	margin: 0 auto;
+height:200px;background-color:#eeeeee; overflow:scroll;
+margin: 0 auto;
 }
 .select_date{
-	margin: 0 auto;
+margin: 0 auto;
 }
 iframe{
-	width:600px; height:300px;
-	margin: 0 auto;
-	text-align: cneter;
+width:600px; height:300px;
+margin: 0 auto;
+text-align: cneter;
 }
-
-
 td.card_title{
 text-align: cneter; overflow: hidden;
 }
@@ -105,7 +97,7 @@ border: solid 3px #808080;
 -webkit-border-radius: 5px;
 -moz-border-radius:5px;
 border-radius:5px;
-width:95%;
+width:100%;
 }
 /*ÉJÅ[ÉhÇåÑä‘Ç»Ç≠ï¿Ç◊ÇÈ*/
 .ichiran_table{
