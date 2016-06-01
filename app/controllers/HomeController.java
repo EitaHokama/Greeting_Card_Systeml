@@ -66,15 +66,18 @@ private FormFactory formFactory;
     	HashMap map = new HashMap<String,String[]>();
     	SelectGC.thisYear(map);
 
-    	List<Employees> emp = Employees.find.all();
+    	SelectEmp sel = new SelectEmp(map);
+
+    	List<Employees> emp = sel.find();
 
     	return ok(valuation.render(emp,"",map));
     }
     public Result valuationPost() {
     	//Employees emp = Employees.find.byId(1);
-    	Map<String, String[]> params =new HashMap<String, String[]>();
+    	Map<String, String[]> params =request().body().asFormUrlEncoded();
+    	SelectEmp sel = new SelectEmp(params);
 
-    	List<Employees> emp = Employees.find.all();
+    	List<Employees> emp = sel.find();
     	return ok(valuation.render(emp,"",params));
     }
 

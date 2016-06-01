@@ -10,8 +10,7 @@
 @c = @{Calendar.getInstance()}
 @{c.setTime(new Date())}
 @nowCS = @{CaseStudy.find.where().eq("year",c.get(Calendar.YEAR)).eq("month",c.get(Calendar.MONTH)+1).findUnique()}
-@post = @{SelectGC.trans(pos)}
-
+@post = @{SelectEmp.trans(pos)}
 
 
 <!-- gc ソート、絞り込み済み感謝カードリスト　par 権限 show　一覧表示項目(左から) -->
@@ -35,9 +34,9 @@
 			<tr>
 				<th class="emp_cd">社員ID</th>
 				<th class="department"><select name="department" onChange="this.form.submit()" />
-					<option>"所属"</option>
+					<option>所属</option>
 						@for(dep <- Department.find.all()){
-							@if(dep.department_name == post.get("sender_department")){
+							@if(dep.department_name == post.get("department")){
 								<option selected>@dep.department_name</option>
 							}else{
 								<option>@dep.department_name</option>
