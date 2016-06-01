@@ -1,0 +1,61 @@
+INSERT  INTO ADMINISTRATORS  VALUES(1,'admin','admin');
+INSERT into CATEGORY values(1,'デバッグ');
+INSERT into CATEGORY values(2,'雑務');
+INSERT into CATEGORY values(3,'アドバイス');
+INSERT into CATEGORY values(4,'その他');
+
+INSERT into DEPARTMENT values(1,'開発部');
+INSERT into DEPARTMENT values(2,'管理部');
+INSERT into DEPARTMENT values(3,'営業部');
+INSERT into DEPARTMENT values(4,'技術支援部');
+INSERT into DEPARTMENT values(5,'総務部');
+INSERT into DEPARTMENT values(6,'人事部');
+
+INSERT INTO EMPLOYEES values(1, '山田太郎', 1 , '1', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(2, '佐藤進', 2 , '2', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(3, '鈴木一郎', 3 , '3', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(4, '高橋真琴', 4 , '4', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(5, '田中勇',  2, '5', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(6, '森佑斗',  4, '6', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(7, '伊藤凛', 1 , '7', '0000', null, 'emp', 1);
+INSERT INTO EMPLOYEES values(8, '鈴木蘭', 6 , '8', '0000','人事' , 'zin', 0);
+INSERT INTO EMPLOYEES values(9, '清水優', 5 , '9', '0000', '経営陣', 'kei', 0);
+INSERT INTO EMPLOYEES values(10, '鈴本次郎', 1 , '10', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(11, '山本杏菜', 2 , '11', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(12, '武田勝', 3 , '12', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(13, '高坂昌', 2 , '13', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(14, '北条早苗', 6 , '14', '0000', '人事', 'zin', 0);
+INSERT INTO EMPLOYEES values(15, '北村政', 4 , '15', '0000', null, 'emp', 0);
+INSERT INTO EMPLOYEES values(16, '上杉兼', 3 , '16', '0000', null, 'emp', 1);
+INSERT INTO EMPLOYEES values(17, '渡辺敦', 6, '17', '0000','人事' , 'zin', 0);
+INSERT INTO EMPLOYEES values(18, '真田友紀', 5 , '18', '0000', '経営陣', 'kei', 0);
+
+INSERT into GRATITUDE_CARD values(1,1,2,'2014-4-12 11:00:00', 'デバッグの件について', 'デバッグの御協力ありがとうございました。', 1);
+INSERT into GRATITUDE_CARD values(2,3,7,'2016-4-12 11:00:00', '手伝いの件', 'お手伝いしてもらい助かりました。', 2);
+INSERT into GRATITUDE_CARD values(3,9,3,'2016-4-13 11:00:00', 'Debag', 'thank you!', 1);
+INSERT into GRATITUDE_CARD values(4,6,5,'2016-4-14 11:00:00', 'ありがとうございました', '色々とご協力ありがとうございました。', 2);
+INSERT into GRATITUDE_CARD values(5,7,8,'2015-4-15 11:00:00', '落とし物', '落し物拾って下さりありがとうございました。', 4);
+INSERT into GRATITUDE_CARD values(6,4,3,'2016-4-15 11:00:00', '差し入れ', '美味しかったです！また宜しくお願いします！！', 4);
+INSERT into GRATITUDE_CARD values(7,10,4,'2016-4-18 11:00:00', 'お礼', 'いつも分からないことに答えていただきありがとうございます。', 3);
+INSERT into GRATITUDE_CARD values(8,2,9,'2016-4-19 11:00:00', 'ご指導', 'これからも頑張ります。ありがとうございました。', 3);
+INSERT into GRATITUDE_CARD values(9,8,3,'2016-4-20 11:00:00', 'デバッグ', 'お忙しい中、手伝って下さりありがとうございました。', 1);
+INSERT into GRATITUDE_CARD values(10,1,6,'2016-4-20 11:00:00', 'アドバイスの件', 'アドバイスいつもありがとうございます。', 3);
+INSERT into GRATITUDE_CARD values(11,5,1,'2015-4-22 11:00:00', 'お手伝い助かりました', '手伝ってくれて作業が捗りました。ありがとうございました。', 2);
+INSERT into GRATITUDE_CARD values(12,7,8,'2016-4-25 11:00:00', 'thank you', 'アドバイスのおかげで問題が解決しました！ありがとうございました！', 3);
+INSERT into GRATITUDE_CARD values(13,10,8,'2014-4-26 11:00:00', 'デバッグについて', '御協力ありがとうございました！', 1);
+INSERT into GRATITUDE_CARD values(14,11,9,'2016-4-27 11:00:00', '手伝い', 'お手伝い助かりました。ありがとうございます。', 2);
+INSERT into GRATITUDE_CARD values(15,12,10,'2016-5-10 11:00:00', 'thank you!', 'デバッグの件、助かりました！', 1);
+INSERT into GRATITUDE_CARD values(16,13,11,'2016-5-13 11:00:00', '助かりました', 'アドバイスのおかげで解決できました！', 3);
+INSERT into GRATITUDE_CARD values(17,14,12,'2015-5-17 11:00:00', '無くし物の件', '拾って下さりありがとうございました。', 4);
+INSERT into GRATITUDE_CARD values(18,15,13,'2016-5-19 11:00:00', '差し入れありがとうございます！', '美味かったです～', 4);
+INSERT into GRATITUDE_CARD values(19,16,14,'2014-5-20 11:00:00', '感謝', 'バグ探しありがとう！', 2);
+INSERT into GRATITUDE_CARD values(20,17,15,'2016-5-22 11:00:00', 'アドバイスの件', 'ありがとうです！', 3);
+INSERT into GRATITUDE_CARD values(21,18,16,'2016-5-23 11:00:00', 'デバッグの件', '手伝ってくれてありがとうございました。', 1);
+INSERT into GRATITUDE_CARD values(22,1,17,'2016-5-24 11:00:00', '教えて貰った件', '分からないところを教えてもらい解決できました！助かりました！', 3);
+INSERT into GRATITUDE_CARD values(23,5,18,'2015-5-25 11:00:00', '雑務', 'いつもお忙しい中ありがとうございました。', 2);
+
+INSERT into CASE_STUDY values(1,2016,4);
+
+INSERT INTO GRATITUDE_CARD_CASE_STUDY  VALUES (2,1);
+INSERT INTO GRATITUDE_CARD_CASE_STUDY  VALUES (5,1);
+INSERT INTO GRATITUDE_CARD_CASE_STUDY  VALUES (6,1);
