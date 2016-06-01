@@ -18,7 +18,7 @@ public class AuthController extends Controller{
 	//下記一般用ログインコード
 	public Result index(){
 		if(session("login") != null){
-			return ok("あなたは既に " + session("id") + " としてログインしています");
+			return ok("あなたは既に " + session("login") + " としてログインしています");
 		}
 		List<Employees> emp = Employees.find.all();
 		return ok(index.render(formFactory.form(Login.class)));
