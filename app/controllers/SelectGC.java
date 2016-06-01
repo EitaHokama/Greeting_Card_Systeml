@@ -76,6 +76,22 @@ public class SelectGC {
 
 		return gc;
 	}
+	public List<Gratitude_Card> findP(){
+		List<Gratitude_Card> gc;
+		ExpressionList<Gratitude_Card> gcWhere;
+
+		gcWhere=makeWhere();
+		gcWhere=findCategory(gcWhere);
+		gcWhere=findDepartment(gcWhere,"send");//send or rec
+		gcWhere=findDepartment(gcWhere,"rec");
+		gcWhere=startDate(gcWhere);
+		gcWhere=endDate(gcWhere);
+		gcWhere=gcWhere.eq("cs", CaseStudy.lastCase());
+
+		gc=sortDate(gcWhere);
+
+		return gc;
+	}
 	public List<Gratitude_Card> findRec(Employees emp){
 		List<Gratitude_Card> gc;
 		ExpressionList<Gratitude_Card> gcWhere;
