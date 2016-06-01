@@ -32,10 +32,13 @@ public class AuthController extends Controller{
 			return badRequest(index.render(form));
 		}else{
 			Login login = form.get();
-			session("login",login.username);
 
-			//perにユーザーネームと権限データを入れ込んでいる。
+			//perにユーザーネームと権限データを入れ、depIdには部署名を入れている。
 			String per = Employees.find.where().eq("name", login.username).findUnique().permissions;
+			String depid = Employees.find.where().eq("name", login.username).findUnique().department_id.department_name;
+
+			session("login",login.username);
+			session("depId",depid);
 
 			if(per == null){
 			MailController mail = new MailController();
@@ -44,11 +47,11 @@ public class AuthController extends Controller{
 
 			if(per.equals("人事")){
 			HomeController zin = new HomeController();
-			return zin.test();
+			return zin.bbs();
 			}
 
 			HomeController kei = new HomeController();
-			return kei.bbs();
+			return kei.typical();
 		}
 	}
 
@@ -77,8 +80,8 @@ public class AuthController extends Controller{
 			AdLogin login = form.get();
 			session("login",login.username);
 
-			TestController test = new TestController();
-			return test.test2();
+			HomeController kanri = new HomeController();
+			return kanri.valuation();
 		}
 
 	}
