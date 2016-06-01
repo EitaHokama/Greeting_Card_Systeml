@@ -4,6 +4,7 @@ import models.CaseStudy;
 
 import models.Employees;
 import models.Gratitude_Card;
+import models.Login;
 import play.mvc.*;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,8 @@ private FormFactory formFactory;
     	return ok(typical.render(gc,cs));
     }*/
     public Result typical(){
+    	if(session("depId").equals("人事6")){
+
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
     	Map map = new HashMap<String, String[]>();
     	gc= Gratitude_Card.find.all();
@@ -87,6 +90,8 @@ private FormFactory formFactory;
     	gc = sel.find();
 
     	return ok(typical.render(gc, "", map));
+    	}
+    	return ok("権限がありません。");
     }
     public Result typicalPost(){
     	List<Gratitude_Card> gc ;

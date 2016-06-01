@@ -23,7 +23,7 @@ public class MailController extends Controller {
 
     	Map<String, String[]> params =request().body().asFormUrlEncoded();
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
+    	gc = sel.findRec(Employees.find.byId(Integer.parseInt(session("empId"))));//Employeesクラスを代入・ログインユーザーのIDで絞込み
 
     	return ok(receive.render(gc, "",params));
     }
@@ -32,7 +32,7 @@ public class MailController extends Controller {
     	Map<String, String[]> params =new HashMap<String, String[]>();
 
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.findRec(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
+    	gc = sel.findRec(Employees.find.byId(Integer.parseInt(session("empId"))));//Employeesクラスを代入・ログインユーザーのIDで絞込み
 
     	return ok(receive.render(gc, "",params));
     }
@@ -41,7 +41,7 @@ public class MailController extends Controller {
 
     	Map<String, String[]> params =request().body().asFormUrlEncoded();
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.findSend(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
+    	gc = sel.findSend(Employees.find.byId(Integer.parseInt(session("empId"))));//Employeesクラスを代入・ログインユーザーのIDで絞込み
 
     	return ok(trans.render(gc, "",params));
     }
@@ -50,7 +50,7 @@ public class MailController extends Controller {
     	Map<String, String[]> params =new HashMap<String, String[]>();
 
     	SelectGC sel = new SelectGC(params);
-    	gc = sel.findSend(Employees.find.byId(1));//Employeesクラスを代入・現在は社員1でログインしていると仮定
+    	gc = sel.findSend(Employees.find.byId(Integer.parseInt(session("empId"))));//Employeesクラスを代入・ログインユーザーのIDで絞込み
 
     	return ok(trans.render(gc, "",params));
     }
