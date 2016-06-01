@@ -336,4 +336,55 @@ public class SelectGC {
 		return map;
  	}
 
+	public static HashMap thisYear(HashMap map) {
+		// TODO 自動生成されたメソッド・スタブ
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ 		Date d = new Date();
+ 		Calendar c=Calendar.getInstance();
+ 		c.setTime(d);
+ 		Calendar cr=Calendar.getInstance();
+ 		cr.set(c.get(Calendar.YEAR), 0, 1, 0, 0, 0);
+ 		d= cr.getTime();
+ 		String[] str =new String[1];
+ 		String[] str2 =new String[1];
+
+ 		str[0]=sdf.format(d);
+ 		cr.add(Calendar.YEAR, 1);
+ 		cr.add(Calendar.DAY_OF_MONTH, -1);
+ 		d=cr.getTime();
+
+ 		str2[0]=sdf.format(d);
+ 		map.remove("start_date");
+ 		map.put("start_date", str);
+
+ 		map.put("end_date", str2);
+		return map;
+
+	}
+
+	public static HashMap ThisMonth(HashMap map) {
+		// TODO 自動生成されたメソッド・スタブ
+ 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ 		Date d = new Date();
+ 		Calendar c=Calendar.getInstance();
+ 		c.setTime(d);
+ 		Calendar cr=Calendar.getInstance();
+ 		cr.set(c.get(Calendar.YEAR), c.get(Calendar.MONTH), 1, 0, 0, 0);
+ 		d= cr.getTime();
+ 		String[] str =new String[1];
+ 		String[] str2 =new String[1];
+
+ 		str[0]=sdf.format(d);
+ 		cr.add(Calendar.MONTH, 1);
+ 		cr.add(Calendar.DAY_OF_MONTH, -1);
+ 		d=cr.getTime();
+
+ 		str2[0]=sdf.format(d);
+ 		map.remove("start_date");
+ 		map.put("start_date", str);
+
+ 		map.put("end_date", str2);
+		return map;
+	}
+
 }

@@ -63,16 +63,21 @@ private FormFactory formFactory;
     }
     public Result valuation() {
     	//Employees emp = Employees.find.byId(1);
+    	HashMap map = new HashMap<String,String[]>();
+    	SelectGC.thisYear(map);
+
     	List<Employees> emp = Employees.find.all();
 
-    	return ok(valuation.render(emp,"",new HashMap<String,String[]>()));
+    	return ok(valuation.render(emp,"",map));
     }
     public Result valuationPost() {
     	//Employees emp = Employees.find.byId(1);
+    	Map<String, String[]> params =new HashMap<String, String[]>();
 
     	List<Employees> emp = Employees.find.all();
-    	return ok(valuation.render(emp,"",new HashMap<String,String[]>()));
+    	return ok(valuation.render(emp,"",params));
     }
+
 
     public Result test(){
     	//Employees emp = Employees.find.byId(1);
@@ -93,11 +98,12 @@ private FormFactory formFactory;
     }*/
     public Result typical(){
     	List<Gratitude_Card> gc = Gratitude_Card.find.all();
-    	Map map = new HashMap<String, String[]>();
+    	HashMap map = new HashMap<String, String[]>();
 
-
+    	SelectGC.ThisMonth(map);
     	gc= Gratitude_Card.find.all();
     	SelectGC sel = new SelectGC(map);
+
     	gc = sel.find();
 
     	return ok(typical.render(gc, "", map));
@@ -125,7 +131,19 @@ private FormFactory formFactory;
 
     }
     public Result valuation_detailed() {
-        return ok(valuation_detailed.render());
+    	List<Gratitude_Card> gc ;
+    	gc= Gratitude_Card.find.all();
+        return ok(valuation_detailed.render(gc, "", new HashMap<String, String[]>(), new Employees()));
+    }
+    public Result valuation_detailedPost() {
+    	Map<String, String[]> params = request().body().asFormUrlEncoded();
+    	Employees emp = Employees.find.byId(Integer.valueOf(params.get("user_id")[0]));
+
+    	SelectGC sel = new SelectGC(params);
+
+    	List<Gratitude_Card> gc ;
+    	gc= sel.findRec(emp);
+        return ok(valuation_detailed.render(gc, "", params, emp));
     }
 
     public Result createTest(){

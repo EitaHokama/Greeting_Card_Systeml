@@ -23,6 +23,7 @@ GET		/creation						controllers.HomeController.creation()
 
 GET		/kanri						controllers.HomeController.kanri()
 
+POST	/valuation_detailed			controllers.HomeController.valuation_detailedPost()
 GET		/valuation_detailed			controllers.HomeController.valuation_detailed()
 
 
