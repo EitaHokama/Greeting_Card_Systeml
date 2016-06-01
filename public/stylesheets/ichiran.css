@@ -59,14 +59,14 @@ width:10%x;
 }
 .ichiran_width{
 }
-table.ichiran_index{
+table.ichiran_index{border:solid 1px #ff0000;
 border-collapse: collapse;
 border-spacing: 0;
 text-align: center;
 width:98.2%;
 height:10%;
 }
-.ichiran_table{
+.ichiran_table{border:solid 1px #0080ff;
 text-align: center;
 color:#ffffff;
 width:100%;
