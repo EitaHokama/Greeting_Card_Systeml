@@ -58,7 +58,10 @@
 	}
 	<script type="text/javascript" language="JavaScript">
     //最初の分類リスト (分類Aリスト)を定義
-    var bunruiA = new Array("部署1","部署2","部署3","部署4","部署5","人事6");
+    var bunruiA = new Array();
+    @for(dep <- Department.find.all()){
+    	bunruiA.push("@dep.department_name");
+    }
     // 次の分類(分類Aごとの分類Bリスト)を定義
     var bunruiB = new Array();
     @for(dep <- Department.find.all()){
