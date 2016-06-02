@@ -21,7 +21,8 @@ public class AuthController extends Controller{
 			return ok("あなたは既に " + session("login") + " としてログインしています");
 		}
 		List<Employees> emp = Employees.find.all();
-		return ok(index.render(formFactory.form(Login.class)));
+		return ok(index.
+				render(formFactory.form(Login.class)));
 	}
 
 	public Result authenticate(){
@@ -52,8 +53,8 @@ public class AuthController extends Controller{
 			return zin.bbs();
 			}
 
-			HomeController kei = new HomeController();
-			return kei.bbs();
+			PickController kei = new PickController();
+			return kei.pickup();
 		}
 	}
 
