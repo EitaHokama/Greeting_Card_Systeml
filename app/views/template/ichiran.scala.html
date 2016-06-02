@@ -161,9 +161,9 @@
 					}else{@if(str=="ピックアップ"){
 						<td class="pickup">
 							@if(gc.get(i).cs.contains(nowCS)){
-								<button form="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" type="submit" name="del_pickup" value="@gc.get(i).card_id" class="pu">解除</button>
+								<button form="selectForm" type="submit" name="del_pickup" value="@gc.get(i).card_id" class="pu">解除</button>
 							}else{
-								<button form="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" type="submit" name="sel_pickup" value="@gc.get(i).card_id" class="pu">登録</button>
+								<button form="selectForm" type="submit" name="sel_pickup" value="@gc.get(i).card_id" class="pu">登録</button>
 							}
 						</td>
 

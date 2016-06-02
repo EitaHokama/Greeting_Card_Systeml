@@ -45,7 +45,7 @@ private FormFactory formFactory;
 		Map<String,String[]> params = request().body().asFormUrlEncoded();
 		Gratitude_Card gc =new Gratitude_Card();
 
-		gc.sender_id= Employees.find.byId(1);//セッションからidを求めること
+		gc.sender_id= Employees.find.byId((Integer.parseInt(session("empId"))));//セッションからidを求めること
 		gc.date = new Date();
 		boolean category_error=true;
 		Category cs = new Category();
