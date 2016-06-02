@@ -169,8 +169,8 @@
 
 					}}}}}}}}
 				}
-			<th class="search"><form name="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" action="@routes.TestController.syousai()" target="iframe" method="POST">
-			<input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></form></th>
+			<form name="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" action="@routes.TestController.syousai()" target="iframe" method="POST">
+			<input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /></form>
 			</tr>
 
 		}
