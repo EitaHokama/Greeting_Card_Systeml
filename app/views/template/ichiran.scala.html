@@ -142,7 +142,7 @@
 	<table class= ichiran_table align="center">
 		@for(i <- range){
 
-			<tr onclick="@{"document." +"selectForm"+ String.valueOf(gc.get(i).card_id) +".submit();" }">
+			<tr class="table_hov" onclick="@{"document." +"selectForm"+ String.valueOf(gc.get(i).card_id) +".submit();" }">
 				@for(str <- show){
 					@if(str == "送信部署"){
 						<td class="sender_department">@gc.get(i).sender_id.department_id.department_name</td>

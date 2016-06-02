@@ -109,8 +109,12 @@ border-collapse: collapse;
 border-spacing: 0;
 }
 /*表の色を1行ごとに変える*/
+
 .ichiran_table tr:nth-of-type(odd) td{background-color:#8eb4d9;border: 2px ;}
 .ichiran_table tr:nth-of-type(even) td{background-color:#487ca3;border: 2px ;}
+tr.table_hov:hover{border: 2px ;font-weight:bold;}
+tr.table_hov{background-color:#ff0000 !important;}
+
 /*詳細ボタンがマウスオーバー&押された時*/
 .ichiran_table input:focus{background-color:#c0c0c0;}
 .ichiran_table input:hover{background-color:#c0c0c0;}
