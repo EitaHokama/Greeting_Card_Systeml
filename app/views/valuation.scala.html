@@ -4,6 +4,10 @@
 @busyo = @{models.Department.find.all}
 @onSideMenu("査定")(""){
 	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/ichiran.css")">
+	<link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/sidevaluation.css")">
+
+
+
 	<script type="text/javascript">
 		function open_detailed(f) {
 			f.target="detaild";
@@ -16,9 +20,12 @@
 		var nWin=window.open("@routes.HomeController.valuation_detailedPost()","hoge","width=300,height=300");
 		}
 	</script>
+
 	}{
 
 	<h2>査定</h2>
-	@sateiT(emp)(par)(pos)
+	<table class="valuation_table">
+	<tr><td>@sateiT(emp)(par)(pos)</td></tr>
+		</table>
 }
 
