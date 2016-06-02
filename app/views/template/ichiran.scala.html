@@ -142,7 +142,7 @@
 	<table class= ichiran_table align="center">
 		@for(i <- range){
 
-			<tr>
+			<tr onclick="@{"document." +"selectForm"+ String.valueOf(gc.get(i).card_id) +".submit();" }">
 				@for(str <- show){
 					@if(str == "送信部署"){
 						<td class="sender_department">@gc.get(i).sender_id.department_id.department_name</td>
@@ -161,15 +161,15 @@
 					}else{@if(str=="ピックアップ"){
 						<td class="pickup">
 							@if(gc.get(i).cs.contains(nowCS)){
-								<button form="selectForm" type="submit" name="del_pickup" value="@gc.get(i).card_id" class="pu">解除</button>
+								<button form="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" type="submit" name="del_pickup" value="@gc.get(i).card_id" class="pu">解除</button>
 							}else{
-								<button form="selectForm" type="submit" name="sel_pickup" value="@gc.get(i).card_id" class="pu">登録</button>
+								<button form="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" type="submit" name="sel_pickup" value="@gc.get(i).card_id" class="pu">登録</button>
 							}
 						</td>
 
 					}}}}}}}}
 				}
-			<th class="search"><form name="syousai" action="@routes.TestController.syousai()" target="iframe" method="POST">
+			<th class="search"><form name="@{"selectForm"+ String.valueOf(gc.get(i).card_id)}" action="@routes.TestController.syousai()" target="iframe" method="POST">
 			<input type="hidden" name="CardNumber" value="@gc.get(i).card_id" /><input type="submit" value="詳細" /></form></th>
 			</tr>
 
