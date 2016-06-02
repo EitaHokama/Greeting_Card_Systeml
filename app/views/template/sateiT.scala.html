@@ -80,7 +80,7 @@
 		@for(i <- range){
 
 
-			<tr onclick="@{"document." +"selectForm"+ String.valueOf(emp.get(i).employees_id) +".submit();" }">
+			<tr  class="table_hov" onclick="@{"document." +"selectForm"+ String.valueOf(emp.get(i).employees_id) +".submit();" }">
 				<td class="emp_cd">@emp.get(i).employees_cd</td>
 				<td class="department">@emp.get(i).department_id.department_name</td>
 				<td class="employees">@emp.get(i).name</td>
