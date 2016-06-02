@@ -15,7 +15,7 @@
 					<h1>感謝カード作成</h1>
 					<table class="line"></table>
 					@if(errLoc=="success"){<div class="error">@errStr</div>}
-					<form name="form1" onsubmit="gettext(this)" action="@routes.CreationController.creationPost()" method="POST">
+					<form name="form1" action="@routes.CreationController.creationPost()" method="POST">
 					<dl>
 
                          <p>カテゴリ
